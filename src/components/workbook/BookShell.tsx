@@ -78,8 +78,8 @@ export function BookShell({
 }: {
   children: ReactNode;
   responses: ResponseMap;
-  saveLabel?: string;
-  studentName?: string;
+  saveLabel?: string | undefined;
+  studentName?: string | undefined;
 }) {
   const [open, setOpen] = useState(false);
   const navigate = useNavigate();
