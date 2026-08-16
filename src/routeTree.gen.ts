@@ -10,33 +10,115 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AdminRouteImport } from './routes/admin'
+import { Route as AgendaRouteImport } from './routes/agenda'
+import { Route as AuthRouteImport } from './routes/auth'
+import { Route as BlueprintRouteImport } from './routes/blueprint'
+import { Route as ContentsRouteImport } from './routes/contents'
+import { Route as DayDaySectionRouteImport } from './routes/day.$day.$section'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminRoute = AdminRouteImport.update({
+  id: '/admin',
+  path: '/admin',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AgendaRoute = AgendaRouteImport.update({
+  id: '/agenda',
+  path: '/agenda',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthRoute = AuthRouteImport.update({
+  id: '/auth',
+  path: '/auth',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BlueprintRoute = BlueprintRouteImport.update({
+  id: '/blueprint',
+  path: '/blueprint',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContentsRoute = ContentsRouteImport.update({
+  id: '/contents',
+  path: '/contents',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DayDaySectionRoute = DayDaySectionRouteImport.update({
+  id: '/day/$day/$section',
+  path: '/day/$day/$section',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/admin': typeof AdminRoute
+  '/agenda': typeof AgendaRoute
+  '/auth': typeof AuthRoute
+  '/blueprint': typeof BlueprintRoute
+  '/contents': typeof ContentsRoute
+  '/day/$day/$section': typeof DayDaySectionRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/admin': typeof AdminRoute
+  '/agenda': typeof AgendaRoute
+  '/auth': typeof AuthRoute
+  '/blueprint': typeof BlueprintRoute
+  '/contents': typeof ContentsRoute
+  '/day/$day/$section': typeof DayDaySectionRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/admin': typeof AdminRoute
+  '/agenda': typeof AgendaRoute
+  '/auth': typeof AuthRoute
+  '/blueprint': typeof BlueprintRoute
+  '/contents': typeof ContentsRoute
+  '/day/$day/$section': typeof DayDaySectionRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/admin'
+    | '/agenda'
+    | '/auth'
+    | '/blueprint'
+    | '/contents'
+    | '/day/$day/$section'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/admin'
+    | '/agenda'
+    | '/auth'
+    | '/blueprint'
+    | '/contents'
+    | '/day/$day/$section'
+  id:
+    | '__root__'
+    | '/'
+    | '/admin'
+    | '/agenda'
+    | '/auth'
+    | '/blueprint'
+    | '/contents'
+    | '/day/$day/$section'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AdminRoute: typeof AdminRoute
+  AgendaRoute: typeof AgendaRoute
+  AuthRoute: typeof AuthRoute
+  BlueprintRoute: typeof BlueprintRoute
+  ContentsRoute: typeof ContentsRoute
+  DayDaySectionRoute: typeof DayDaySectionRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +130,59 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin': {
+      id: '/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AdminRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/agenda': {
+      id: '/agenda'
+      path: '/agenda'
+      fullPath: '/agenda'
+      preLoaderRoute: typeof AgendaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/auth': {
+      id: '/auth'
+      path: '/auth'
+      fullPath: '/auth'
+      preLoaderRoute: typeof AuthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/blueprint': {
+      id: '/blueprint'
+      path: '/blueprint'
+      fullPath: '/blueprint'
+      preLoaderRoute: typeof BlueprintRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contents': {
+      id: '/contents'
+      path: '/contents'
+      fullPath: '/contents'
+      preLoaderRoute: typeof ContentsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/day/$day/$section': {
+      id: '/day/$day/$section'
+      path: '/day/$day/$section'
+      fullPath: '/day/$day/$section'
+      preLoaderRoute: typeof DayDaySectionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AdminRoute: AdminRoute,
+  AgendaRoute: AgendaRoute,
+  AuthRoute: AuthRoute,
+  BlueprintRoute: BlueprintRoute,
+  ContentsRoute: ContentsRoute,
+  DayDaySectionRoute: DayDaySectionRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
