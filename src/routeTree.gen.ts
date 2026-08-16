@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AgendaRouteImport } from './routes/agenda'
 import { Route as AuthRouteImport } from './routes/auth'
+import { Route as BlueprintRouteImport } from './routes/blueprint'
 import { Route as ContentsRouteImport } from './routes/contents'
 import { Route as DayDaySectionRouteImport } from './routes/day.$day.$section'
 
@@ -30,6 +31,11 @@ const AuthRoute = AuthRouteImport.update({
   path: '/auth',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BlueprintRoute = BlueprintRouteImport.update({
+  id: '/blueprint',
+  path: '/blueprint',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ContentsRoute = ContentsRouteImport.update({
   id: '/contents',
   path: '/contents',
@@ -45,6 +51,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/agenda': typeof AgendaRoute
   '/auth': typeof AuthRoute
+  '/blueprint': typeof BlueprintRoute
   '/contents': typeof ContentsRoute
   '/day/$day/$section': typeof DayDaySectionRoute
 }
@@ -52,6 +59,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/agenda': typeof AgendaRoute
   '/auth': typeof AuthRoute
+  '/blueprint': typeof BlueprintRoute
   '/contents': typeof ContentsRoute
   '/day/$day/$section': typeof DayDaySectionRoute
 }
@@ -60,22 +68,42 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/agenda': typeof AgendaRoute
   '/auth': typeof AuthRoute
+  '/blueprint': typeof BlueprintRoute
   '/contents': typeof ContentsRoute
   '/day/$day/$section': typeof DayDaySectionRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/agenda' | '/auth' | '/contents' | '/day/$day/$section'
+  fullPaths:
+    | '/'
+    | '/agenda'
+    | '/auth'
+    | '/blueprint'
+    | '/contents'
+    | '/day/$day/$section'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/agenda' | '/auth' | '/contents' | '/day/$day/$section'
+  to:
+    | '/'
+    | '/agenda'
+    | '/auth'
+    | '/blueprint'
+    | '/contents'
+    | '/day/$day/$section'
   id:
-    '__root__' | '/' | '/agenda' | '/auth' | '/contents' | '/day/$day/$section'
+    | '__root__'
+    | '/'
+    | '/agenda'
+    | '/auth'
+    | '/blueprint'
+    | '/contents'
+    | '/day/$day/$section'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AgendaRoute: typeof AgendaRoute
   AuthRoute: typeof AuthRoute
+  BlueprintRoute: typeof BlueprintRoute
   ContentsRoute: typeof ContentsRoute
   DayDaySectionRoute: typeof DayDaySectionRoute
 }
@@ -103,6 +131,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/blueprint': {
+      id: '/blueprint'
+      path: '/blueprint'
+      fullPath: '/blueprint'
+      preLoaderRoute: typeof BlueprintRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/contents': {
       id: '/contents'
       path: '/contents'
@@ -124,6 +159,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AgendaRoute: AgendaRoute,
   AuthRoute: AuthRoute,
+  BlueprintRoute: BlueprintRoute,
   ContentsRoute: ContentsRoute,
   DayDaySectionRoute: DayDaySectionRoute,
 }
