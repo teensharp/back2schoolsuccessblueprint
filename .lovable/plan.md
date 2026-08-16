@@ -58,9 +58,18 @@ This entire section feeds Monday's Blueprint Lab directly.
 - Progress bar per day and across the week; students can move freely between days.
 - Days can be gated so a day unlocks on its date (staff can unlock early).
 
+## Keeping the blueprint off the shelf
+
+Included in this build:
+
+- **The Vault touchpoints** — each day's pre-work links its assigned Vault item, and each completed Blueprint section ends with a topic-matched "Go deeper in The Vault" block. The final blueprint page closes with an invitation to keep the plan alive through The Vault and the upcoming asynchronous course.
+- **Calendar export** — the final blueprint turns opportunity deadlines, first leadership action, and first-two-weeks commitments into calendar events: a downloadable calendar file plus one-click "Add to Google Calendar" links per item. No account connection needed, so it works with school Google accounts, Apple, and Outlook.
+
 ## Staff dashboard
 
 Read-only. Roster with per-student completion across the four days, ability to open any student's book and read responses, and a completion export. Staff access is a separate role with server-enforced access rules — students can only ever see their own book.
+
+
 
 ## Design
 
@@ -89,4 +98,14 @@ Aligned to The Vault by TeenSHARP: heavy condensed uppercase display type for he
 ## Content still needed
 
 Days 2–4 pre-work documents. I'll draft those from the framing document so the book is complete, and swap in your final wording whenever you send it — content files make that a low-risk edit. Day 1 uses your exact text.
+
+## Phase 2 — after the blueprint is complete
+
+Captured now, decided later:
+
+- **Daily Share-Out Challenge** — each day ends with a challenge to share one commitment with a named person (parent, counselor, teacher, peer). Student logs who they told; the app generates a branded commitment card from their own words that is easy to send or post. This is the accountability and word-of-mouth engine.
+- **Parent-facing summary** — a shareable read-only view of the student's blueprint, which doubles as the natural moment to introduce the asynchronous course.
+- **Week 1 and Week 4 check-ins** — scheduled return visits that ask what they actually did, keeping the plan active and pulling students back into the product.
+- **Google Calendar OAuth sync** — two-way sync of weekly goals, if the simpler calendar export proves insufficient. Requires each student to connect their Google account, which school-managed accounts often restrict.
+
 
