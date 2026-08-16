@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AuthRouteImport } from './routes/auth'
+import { Route as ContentsRouteImport } from './routes/contents'
 import { Route as DayDaySectionRouteImport } from './routes/day.$day.$section'
 
 const IndexRoute = IndexRouteImport.update({
@@ -23,6 +24,11 @@ const AuthRoute = AuthRouteImport.update({
   path: '/auth',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ContentsRoute = ContentsRouteImport.update({
+  id: '/contents',
+  path: '/contents',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const DayDaySectionRoute = DayDaySectionRouteImport.update({
   id: '/day/$day/$section',
   path: '/day/$day/$section',
@@ -32,30 +38,34 @@ const DayDaySectionRoute = DayDaySectionRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
+  '/contents': typeof ContentsRoute
   '/day/$day/$section': typeof DayDaySectionRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
+  '/contents': typeof ContentsRoute
   '/day/$day/$section': typeof DayDaySectionRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
+  '/contents': typeof ContentsRoute
   '/day/$day/$section': typeof DayDaySectionRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/auth' | '/day/$day/$section'
+  fullPaths: '/' | '/auth' | '/contents' | '/day/$day/$section'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/auth' | '/day/$day/$section'
-  id: '__root__' | '/' | '/auth' | '/day/$day/$section'
+  to: '/' | '/auth' | '/contents' | '/day/$day/$section'
+  id: '__root__' | '/' | '/auth' | '/contents' | '/day/$day/$section'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AuthRoute: typeof AuthRoute
+  ContentsRoute: typeof ContentsRoute
   DayDaySectionRoute: typeof DayDaySectionRoute
 }
 
@@ -75,6 +85,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/contents': {
+      id: '/contents'
+      path: '/contents'
+      fullPath: '/contents'
+      preLoaderRoute: typeof ContentsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/day/$day/$section': {
       id: '/day/$day/$section'
       path: '/day/$day/$section'
@@ -88,6 +105,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AuthRoute: AuthRoute,
+  ContentsRoute: ContentsRoute,
   DayDaySectionRoute: DayDaySectionRoute,
 }
 export const routeTree = rootRouteImport
