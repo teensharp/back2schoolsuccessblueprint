@@ -41,7 +41,7 @@ function FieldLabel({
 }: {
   htmlFor?: string;
   children: React.ReactNode;
-  carried?: boolean;
+  carried?: boolean | undefined;
 }) {
   return (
     <Label htmlFor={htmlFor} className="mb-2 block text-sm font-semibold leading-snug text-ink">
@@ -219,7 +219,7 @@ function WorkbookTable({
   field: Extract<Field, { kind: "table" }>;
   value: unknown;
   onChange: (key: string, value: unknown) => void;
-  carried?: boolean;
+  carried?: boolean | undefined;
 }) {
   const [showExamples, setShowExamples] = useState(false);
   const saved = asRows(value);
@@ -328,14 +328,14 @@ function TableCell({
     return (
       <div className="flex flex-wrap gap-1">
         {BEHAVIORS.map((b) => {
-          const active = selected.includes(b.name);
+          const active = selected.includes(b);
           return (
             <button
-              key={b.name}
+              key={b}
               type="button"
               onClick={() =>
                 onChange(
-                  (active ? selected.filter((s) => s !== b.name) : [...selected, b.name]).join("|"),
+                  (active ? selected.filter((s) => s !== b) : [...selected, b]).join("|"),
                 )
               }
               className={`rounded-full border px-2 py-0.5 text-[11px] font-semibold transition-colors ${
@@ -344,7 +344,7 @@ function TableCell({
                   : "border-rule text-muted-foreground hover:border-forest"
               }`}
             >
-              {b.name}
+              {b}
             </button>
           );
         })}
