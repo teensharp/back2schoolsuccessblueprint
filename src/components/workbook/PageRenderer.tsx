@@ -176,7 +176,7 @@ export function PageRenderer({ page, ctx }: { page: Page; ctx: Ctx }) {
     <article className="space-y-10">
       <header>
         <p className="text-xs font-bold uppercase tracking-[0.2em] text-vault-foreground/70">
-          Day {page.day} \u00b7 {page.eyebrow}
+          Day {page.day} &middot; {page.eyebrow}
         </p>
         <h2 className="mt-1 font-display text-4xl uppercase leading-tight tracking-wide text-forest">
           {page.title}
