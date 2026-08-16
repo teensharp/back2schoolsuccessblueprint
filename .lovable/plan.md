@@ -99,3 +99,13 @@ Aligned to The Vault by TeenSHARP: heavy condensed uppercase display type for he
 
 Days 2–4 pre-work documents. I'll draft those from the framing document so the book is complete, and swap in your final wording whenever you send it — content files make that a low-risk edit. Day 1 uses your exact text.
 
+## Phase 2 — after the blueprint is complete
+
+Captured now, decided later:
+
+- **Daily Share-Out Challenge** — each day ends with a challenge to share one commitment with a named person (parent, counselor, teacher, peer). Student logs who they told; the app generates a branded commitment card from their own words that is easy to send or post. This is the accountability and word-of-mouth engine.
+- **Parent-facing summary** — a shareable read-only view of the student's blueprint, which doubles as the natural moment to introduce the asynchronous course.
+- **Week 1 and Week 4 check-ins** — scheduled return visits that ask what they actually did, keeping the plan active and pulling students back into the product.
+- **Google Calendar OAuth sync** — two-way sync of weekly goals, if the simpler calendar export proves insufficient. Requires each student to connect their Google account, which school-managed accounts often restrict.
+
+
