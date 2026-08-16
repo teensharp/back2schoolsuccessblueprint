@@ -68,19 +68,25 @@ Aligned to The Vault by TeenSHARP: heavy condensed uppercase display type for he
 
 ## Technical notes
 
-- TanStack Start with routes per day and per section (`/day/1/pre-work`, `/day/1/session`, `/day/1/lab`, `/day/1/reflect`, `/blueprint`, `/admin`).
-- Lovable Cloud for auth (email/password) and the database. Tables: `profiles`, `responses` (one row per student per question key, with a JSONB value for lists and repeatable rows), `day_progress`, `ai_summaries`, `user_roles`.
+- TanStack Start with routes for the front matter (`/`, `/contents`, `/agenda`) and per day and section (`/day/1/pre-work`, `/day/1/session`, `/day/1/lab`, `/day/1/reflect`, `/blueprint`, `/admin`).
+- Lovable Cloud for auth (email/password) and the database. Tables: `profiles` (name, school, grade), `responses` (one row per student per question key, with a JSONB value for checklists and repeatable table rows), `day_progress`, `ai_summaries`, `user_roles`.
 - Row-level security: students read/write only their own rows; staff role gets read-only access through a security-definer role check.
-- Question content lives in a typed content file per day, so wording can be edited without touching layout.
+- Question content lives in a typed content file per day, so wording, checklist options, and example helper text can be edited without touching layout. Field types cover single-select, agree/disagree rows, multi-checklist with Other, short text, long reflection, and repeatable multi-column tables.
 - AI day summaries run server-side through the AI Gateway on a fast model, cached per student per day.
-- PDF export renders the assembled blueprint client-side for print/save.
+- PDF export renders the cover, contents, and assembled blueprint client-side for print/save.
 
 ## Build order
 
 1. Cloud setup: auth, schema, roles, policies.
-2. Shell, design system, navigation, auto-save engine.
-3. Day 1 complete (all four parts) as the pattern.
-4. Days 2–4 content.
-5. Final Blueprint page and PDF export.
-6. AI end-of-day summaries.
-7. Staff dashboard.
+2. Design system, book shell, navigation, auto-save engine.
+3. Cover, Table of Contents, Agenda.
+4. Day 1 Pre-Work in full, then Day 1 session notes, Blueprint Lab, and end-of-day analysis as the pattern.
+5. Days 2–4 content.
+6. Final Blueprint page and PDF export.
+7. AI end-of-day summaries.
+8. Staff dashboard.
+
+## Content still needed
+
+Days 2–4 pre-work documents. I'll draft those from the framing document so the book is complete, and swap in your final wording whenever you send it — content files make that a low-risk edit. Day 1 uses your exact text.
+
