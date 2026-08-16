@@ -58,9 +58,18 @@ This entire section feeds Monday's Blueprint Lab directly.
 - Progress bar per day and across the week; students can move freely between days.
 - Days can be gated so a day unlocks on its date (staff can unlock early).
 
+## Keeping the blueprint off the shelf
+
+Included in this build:
+
+- **The Vault touchpoints** — each day's pre-work links its assigned Vault item, and each completed Blueprint section ends with a topic-matched "Go deeper in The Vault" block. The final blueprint page closes with an invitation to keep the plan alive through The Vault and the upcoming asynchronous course.
+- **Calendar export** — the final blueprint turns opportunity deadlines, first leadership action, and first-two-weeks commitments into calendar events: a downloadable calendar file plus one-click "Add to Google Calendar" links per item. No account connection needed, so it works with school Google accounts, Apple, and Outlook.
+
 ## Staff dashboard
 
 Read-only. Roster with per-student completion across the four days, ability to open any student's book and read responses, and a completion export. Staff access is a separate role with server-enforced access rules — students can only ever see their own book.
+
+
 
 ## Design
 
