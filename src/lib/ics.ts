@@ -16,7 +16,7 @@ function escape(text: string): string {
 }
 
 function stamp(): string {
-  return new Date().toISOString().replace(/[-:]/g, "").split(".")[0] + "Z";
+  return `${new Date().toISOString().replace(/[-:]/g, "").slice(0, 15)}Z`;
 }
 
 function nextDay(date: string): string {
