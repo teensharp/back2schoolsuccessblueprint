@@ -73,7 +73,19 @@ function AuthPage() {
       }
       void navigate({ to: "/" });
     } catch (err) {
-      setError(err instanceof Error ? err.message : "Something went wrong. Try again.");
+      const raw = err instanceof Error ? err.message : "";
+      let message = raw || "Something went wrong. Try again.";
+      if (/weak|pwned|known to be/i.test(raw)) {
+        message =
+          "That password has appeared in known data breaches. Choose a longer, unique password (try 4 random words plus a number).";
+      } else if (/after \d+ seconds/i.test(raw)) {
+        message = "Too many attempts in a row. Wait about 30 seconds, then try again.";
+      } else if (/already registered|already exists/i.test(raw)) {
+        message = "That email already has an account. Switch to \u201CI already have an account\u201D to sign in.";
+      } else if (/invalid login credentials/i.test(raw)) {
+        message = "That email and password don\u2019t match. Check them and try again.";
+      }
+      setError(message);
     } finally {
       setBusy(false);
     }
