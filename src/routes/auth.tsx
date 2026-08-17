@@ -1,3 +1,4 @@
+import logo from "@/assets/teensharp-logo.png.asset.json";
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 
@@ -88,7 +89,12 @@ function AuthPage() {
   return (
     <div className="grid min-h-screen lg:grid-cols-2">
       <div className="hidden flex-col justify-between bg-forest p-12 text-forest-foreground lg:flex">
-        <p className="font-display text-sm uppercase tracking-[0.3em] text-vault">The Vault</p>
+        <div className="flex items-center gap-3">
+          <span className="rounded-md bg-brand-surface px-3 py-1.5">
+            <img src={logo.url} alt="TeenSHARP" className="h-8 w-auto" />
+          </span>
+          <p className="font-display text-sm uppercase tracking-[0.3em] text-vault">The Vault</p>
+        </div>
         <div>
           <p className="font-display text-sm uppercase tracking-[0.2em] text-vault">
             {PROGRAM_NAME}
