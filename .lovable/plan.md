@@ -148,3 +148,6 @@ A third pre-work assignment on Wednesday. The student builds a real, fully block
 - `src/lib/ics.ts` is extended to emit milestone events as well as deadlines; Google Calendar template links are generated per row.
 
 
+- Day 3 pre-work Part 3 lives under `d3.pw.cal.*` in `src/lib/content/day3.ts`; the study-hour total is computed client-side from the per-day table and compared against the 30-35 range.
+- The uploaded calendar screenshot is added as a Lovable asset and rendered through a new image/example block kind in `PageRenderer.tsx`, so more reference screenshots can be added later without code changes.
+- Recurring study blocks and the weekly review block are emitted by `src/lib/ics.ts` as weekly-recurring events.
