@@ -149,7 +149,37 @@ Optionally, staff can generate it from the cohort's own answers for that day, so
 
 **Cost** — a handful of staff-triggered generations per day for the entire cohort, not per student. Negligible.
 
+## Part G — "Your Next Step" offers inside the book
+
+Not ad banners. The workbook already knows the student's grade, what they struggled with, and what they committed to, so every offer is placed as the logical next step at the exact moment the student feels the need. One offer per placement, never a carousel, always in the book's own voice and design.
+
+**The offer catalog** lives in one content file so pricing and names change without touching pages: The Vault ($79/yr), Group Coaching (included with Vault), Live Workshops and Intensives ($79–$495), Strategy Session ($249, or $149 as an add-on), College Planning and Advising ($1,500/yr, grades 9–11), Spring and Fall Application Accelerators ($299–$499), Senior Advising ($2,500), Senior Advising Plus ($4,500). Each entry carries who it is for, what it includes, what it does not include, the grade range, and a note that sponsored and reduced-cost seats exist.
+
+**Where offers appear, and which one:**
+
+| Placement | Trigger | Offer |
+|---|---|---|
+| Every day's pre-work | The assigned Vault item | The Vault — "this is one item; the library has the rest" |
+| End of each Blueprint Lab | Section completed | Vault deep-dive on that exact topic |
+| Day 2, after the 4.0 self-evaluation | Low score or two-plus weak categories | Group Coaching (included with Vault) to work the fix list with an advisor |
+| Day 2, teacher conversations | Conversations logged | The Vault's academic playbooks |
+| Day 3, weekly calendar | Calendar built | Monthly Group Coaching as the weekly-evaluation accountability partner |
+| Day 4, opportunity commitments | 5+ programs with deadlines | Grades 9–11: College Planning and Advising. Rising seniors: Spring Accelerator |
+| Final Blueprint page | Book complete | Grade-matched primary offer plus the Strategy Session as the low-commitment bridge |
+| Blueprint PDF export | On the last page | A single closing page: "Keep this plan alive" with the grade-matched next step |
+
+**Grade routing** — the student's grade is already on their profile, so the book resolves one primary next step: grades 8–9 → The Vault plus workshops; grades 9–11 → College Planning and Advising, with the Strategy Session as the try-first option; rising seniors → Spring Accelerator now, Senior Advising in the fall.
+
+**Parent-facing moment** — the Wednesday 6pm Parent Workshop and the final Blueprint both get a "Share with my parent" summary that ends with the family-facing offer block, since parents make the purchase.
+
+**Access framing, always** — every offer block states plainly that sponsored seats, promo codes, and sponsored registrations exist and how to ask, so cost never reads as a wall. This keeps the offers consistent with how the model is designed to be sold.
+
+**Measurement** — each offer block logs impressions and clicks against the placement id, and the staff dashboard shows which placements convert. That tells you which day and which moment actually drives Vault signups before the asynchronous course launches.
+
+**Deferred to Phase 2:** the daily accountability share-out cards, which are the organic-reach half of this and pair naturally with the Vault referral ask.
+
 ## Technical notes
+
 
 
 
@@ -170,3 +200,6 @@ Optionally, staff can generate it from the cohort's own answers for that day, so
 - New `session_summaries` table (day, title, body, published flag, published_at, author). Grants plus RLS: any authenticated student can read published rows; only staff/admin can insert, update, or unpublish. Students never write to it.
 - Staff drafting runs through a new server function on the Lovable AI gateway using `google/gemini-3.6-flash`, called only after a staff role check; the result is stored as an editable draft, never auto-published.
 - The recap box renders as a new block kind in `PageRenderer.tsx`, fed by a query on `session_summaries` for the current day; the admin editor lives as a tab on `/admin`.
+- Offers live in `src/lib/content/offers.ts` (id, name, price, audience grades, includes, excludes, CTA url, access note); placements reference an offer id, so nothing is duplicated per page.
+- A new `offer` block kind in `PageRenderer.tsx` renders them; grade routing is a pure function over the profile grade plus the student's own response data.
+- Click/impression tracking uses a small `offer_events` table (user_id, placement_id, offer_id, event, created_at) with insert-own RLS and staff read; the admin dashboard aggregates it.
