@@ -53,6 +53,11 @@ function AuthPage() {
     setError(null);
     try {
       if (mode === "signup") {
+        if (password.length < 8 || !/[A-Za-z]/.test(password) || !/[0-9]/.test(password)) {
+          throw new Error(
+            "Your password needs at least 8 characters, including one letter and one number.",
+          );
+        }
         const { error: err } = await supabase.auth.signUp({
           email,
           password,
@@ -68,7 +73,19 @@ function AuthPage() {
       }
       void navigate({ to: "/" });
     } catch (err) {
-      setError(err instanceof Error ? err.message : "Something went wrong. Try again.");
+      const raw = err instanceof Error ? err.message : "";
+      let message = raw || "Something went wrong. Try again.";
+      if (/weak|pwned|known to be/i.test(raw)) {
+        message =
+          "That password has appeared in known data breaches. Choose a longer, unique password (try 4 random words plus a number).";
+      } else if (/after \d+ seconds/i.test(raw)) {
+        message = "Too many attempts in a row. Wait about 30 seconds, then try again.";
+      } else if (/already registered|already exists/i.test(raw)) {
+        message = "That email already has an account. Switch to \u201CI already have an account\u201D to sign in.";
+      } else if (/invalid login credentials/i.test(raw)) {
+        message = "That email and password don\u2019t match. Check them and try again.";
+      }
+      setError(message);
     } finally {
       setBusy(false);
     }
@@ -164,9 +181,30 @@ function AuthPage() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
-                minLength={6}
+                minLength={8}
+                aria-describedby="password-rules"
                 className="mt-1.5 bg-paper"
               />
+              {mode === "signup" ? (
+                <ul
+                  id="password-rules"
+                  className="mt-2 space-y-1 text-xs text-muted-foreground"
+                >
+                  {[
+                    { ok: password.length >= 8, label: "At least 8 characters" },
+                    { ok: /[A-Za-z]/.test(password), label: "At least one letter" },
+                    { ok: /[0-9]/.test(password), label: "At least one number" },
+                    {
+                      ok: password.length >= 12,
+                      label: "12+ characters recommended \u2014 common or breached passwords are rejected",
+                    },
+                  ].map((rule) => (
+                    <li key={rule.label} className={rule.ok ? "text-forest" : undefined}>
+                      <span aria-hidden="true">{rule.ok ? "\u2713" : "\u2022"}</span> {rule.label}
+                    </li>
+                  ))}
+                </ul>
+              ) : null}
             </div>
             {error ? <p className="text-sm text-destructive">{error}</p> : null}
             <Button type="submit" disabled={busy} className="w-full bg-forest text-forest-foreground hover:bg-forest/90">
