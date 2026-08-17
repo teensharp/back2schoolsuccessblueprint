@@ -115,6 +115,170 @@ export const day3: Day = {
             },
           ],
         },
+        {
+          id: "p4",
+          number: "Part 4",
+          title: "Design My Weekly Calendar",
+          intro:
+            "Leadership and academics both run on the same scarce resource: your hours. Before Wednesday, rebuild your week so that every minute from wake-up to bedtime has a job. This is the assignment that makes the rest of the blueprint executable.",
+          blocks: [
+            {
+              kind: "principles",
+              title: "The seven principles",
+              items: [
+                {
+                  title: "Give every minute a job",
+                  text: "From the time you wake up to the time you go to bed, every block is assigned based on your yearly, monthly, weekly, and daily goals. Personal routines belong on the calendar too \u2014 meals, rest, workouts, time with family, worship, commuting. Practically, this means your Google Calendar has no blank space.",
+                  example:
+                    "6:30 Wake and get ready \u00b7 7:10 Commute \u00b7 7:45 School \u00b7 3:10 Snack and reset \u00b7 3:30 Chem problem set \u00b7 5:00 Dinner with family \u00b7 5:45 Spanish recall practice \u00b7 7:15 Workout \u00b7 8:30 Read ahead in APUSH \u00b7 10:00 Wind down.",
+                },
+                {
+                  title: "Protect 30 to 35 hours of study and homework",
+                  text: "This is the time you spend mastering content and applying the techniques from this week \u2014 spaced repetition, active recall, practice problems, reading ahead. Mastery takes hours, and those hours have to be visible on the calendar before the week starts.",
+                  example:
+                    "Roughly 4 hours on each school day plus 6 to 8 hours across the weekend puts you inside the range.",
+                },
+                {
+                  title: "Use your weekends on purpose",
+                  text: "It is impossible to reach 30 to 35 hours without weekends. Weekends are not do-nothing time; they are your longest uninterrupted blocks. Decide honestly how much rest you need, then build real work around it. If you treat learning as a chore, weekends feel like punishment. If learning is what growing up is for, weekend blocks are the most productive hours you own.",
+                },
+                {
+                  title: "If it is not on the calendar, it will not get done",
+                  text: "Any time you tell someone you are going to do something, the first move is to put it on the calendar. Sequence: set goals, build the to-do list from those goals, then place the to-do list onto the calendar as time blocks.",
+                },
+                {
+                  title: "Pre-schedule; do not wait to be told",
+                  text: "Students say they cannot schedule because they do not know when tests will be assigned. That thinking runs against everything you learned this week. Whether or not you have a test should change nothing about how you study. With backward calendaring, an assignment appearing on Tuesday should not disturb your blocks unless it was genuinely assigned last minute.",
+                },
+                {
+                  title: "Build systems that survive your human nature",
+                  text: "Respect the schedule so that studying is not a matter of mood or whim. If you rely on how you feel on a given evening, you will not achieve much. The point of the calendar is that the decision was already made by a more disciplined version of you.",
+                },
+                {
+                  title: "Evaluate weekly and adjust",
+                  text: "Google Calendar repeats blocks week over week, but repeating is not the same as evaluating. Every week, ask what needed more time and what needed less. Students who struggle in a subject and change nothing about their approach \u2014 same hours, same methods \u2014 are hoping for a different result from identical inputs. That is not how it works.",
+                  example:
+                    "Sunday, 30 minutes: review last week's blocks, move hours toward the subject where your work is not producing the grade, and change the method, not just the minutes.",
+                },
+              ],
+            },
+            {
+              kind: "image",
+              src: "/assets/weekly-calendar-example.png",
+              alt: "A student's Google Calendar for one week, fully color-coded with no empty space: classes, study blocks, meals, workouts, and personal time.",
+              caption:
+                "This is the standard. Every hour is assigned: classes, named study blocks (\u201cWrite FWS Essay,\u201d \u201cBIO Notes\u201d), meals, workout, and personal time. Notice that the study blocks name the actual task, not just the subject.",
+            },
+            f({
+              kind: "table",
+              key: "d3.pw.studyhours",
+              label: "My study and homework hours this week",
+              rows: 7,
+              addRows: false,
+              totalColumn: "hours",
+              totalLabel: "Total study hours planned",
+              targetMin: 30,
+              targetMax: 35,
+              columns: [
+                { key: "day", label: "Day", type: "text" },
+                { key: "hours", label: "Study hours", type: "number" },
+                { key: "blocks", label: "What those blocks are specifically for", type: "long" },
+              ],
+            }),
+            {
+              kind: "note",
+              text: "Fill in all seven days, weekends included. The total updates as you type and tells you whether your plan actually clears the standard.",
+            },
+            f({
+              kind: "table",
+              key: "d3.pw.weekgrid",
+              label: "My week, block by block \u2014 no blank space",
+              rows: 8,
+              addRows: true,
+              examplesTitle: "Show a worked example",
+              examples: [
+                {
+                  label: "Weekday evening",
+                  text: "Mon \u00b7 3:30\u20135:00 \u00b7 Chem problem set, retry the six I missed on the quiz \u00b7 Academics",
+                },
+                {
+                  label: "Personal, still scheduled",
+                  text: "Mon \u00b7 5:00\u20135:45 \u00b7 Dinner with family, phone in the other room \u00b7 Personal",
+                },
+                {
+                  label: "Weekend deep block",
+                  text: "Sat \u00b7 9:00\u201312:00 \u00b7 APUSH reading ahead two chapters + Cornell notes \u00b7 Academics",
+                },
+              ],
+              columns: [
+                { key: "day", label: "Day", type: "text" },
+                { key: "time", label: "Time block", type: "text" },
+                { key: "what", label: "What happens in it (be specific)", type: "long" },
+                { key: "type", label: "Academic / Activity / Personal / Rest", type: "text" },
+              ],
+            }),
+            f({
+              kind: "agree",
+              key: "d3.pw.calendar.audit",
+              label: "Audit my calendar against the principles",
+              choices: ["Yes", "No"],
+              score: true,
+              bands: [
+                {
+                  min: 6,
+                  label: "Built to hold",
+                  text: "This calendar can carry a demanding year. Now the work is respecting it in week six, not just week one.",
+                },
+                {
+                  min: 3,
+                  label: "Partly built",
+                  text: "You have a shape, not yet a system. Fix the No items before Wednesday's session.",
+                },
+                {
+                  min: 0,
+                  label: "Not yet a calendar",
+                  text: "Right now this is a wish list. Rebuild it block by block before the session \u2014 bring questions if you get stuck.",
+                },
+              ],
+              statements: [
+                "Every hour from wake-up to bedtime is assigned \u2014 my calendar has no blank space.",
+                "My study and homework blocks total at least 30 hours.",
+                "My weekends contain real, purposeful work blocks, not just rest.",
+                "Meals, rest, family time, and my routines are on the calendar, not assumed.",
+                "Each study block names a specific task, not just a subject.",
+                "My blocks repeat weekly in Google Calendar.",
+                "I have a recurring weekly review block to evaluate and adjust the schedule.",
+              ],
+            }),
+            f({
+              kind: "short",
+              key: "d3.pw.review.day",
+              label: "My weekly review happens every:",
+              placeholder: "e.g. Sunday 7:00 PM",
+            }),
+            f({
+              kind: "long",
+              key: "d3.pw.calendar.hard",
+              label:
+                "Where this schedule will break first, who or what will break it, and what I will do when that happens:",
+              rows: 4,
+            }),
+            f({
+              kind: "long",
+              key: "d3.pw.calendar.attitude",
+              label:
+                "Write honestly about your attitude toward schoolwork. Where do you still treat learning as a chore to survive rather than the work of growing up, and what does that cost you?",
+              rows: 4,
+            }),
+            {
+              kind: "vault",
+              title: "Go deeper in The Vault",
+              text: "The Vault walks through building the recurring block structure in Google Calendar step by step, plus the Sunday review ritual.",
+              cta: "Open The Vault",
+            },
+          ],
+        },
+
       ],
     },
     session: {
