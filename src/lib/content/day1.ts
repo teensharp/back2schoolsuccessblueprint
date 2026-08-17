@@ -1,3 +1,4 @@
+import { VAULT_VIDEOS } from "@/lib/brand";
 import { BEHAVIORS, BEHAVIOR_DEFINITIONS } from "./behaviors";
 import { f, type Block, type Day, type Part } from "./types";
 
@@ -442,7 +443,8 @@ const part4: Part = {
       kind: "vault",
       title: "Go deeper in The Vault",
       text: "Watch \u201cBuilding Habits That Stick\u201d in The Vault before Monday's session to sharpen your reset plan.",
-      cta: "Open The Vault",
+      href: VAULT_VIDEOS.habits,
+      cta: "Watch it in The Vault",
     },
   ],
 };
@@ -652,7 +654,8 @@ export const day1: Day = {
               kind: "vault",
               title: "Go deeper in The Vault",
               text: "The Vault's Reset Playbook walks through how to protect a plan like this in the first month of school.",
-              cta: "Open The Vault",
+              href: VAULT_VIDEOS.reset,
+              cta: "Watch the Reset Playbook",
             },
           ],
         },

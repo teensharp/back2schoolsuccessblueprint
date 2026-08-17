@@ -1,3 +1,4 @@
+import { VAULT_VIDEOS } from "@/lib/brand";
 import calendarExample from "@/assets/weekly-calendar-example.png";
 
 import { f, type Day } from "./types";
@@ -113,7 +114,8 @@ export const day3: Day = {
               kind: "vault",
               title: "Go deeper in The Vault",
               text: "The Vault's leadership series breaks down how students turn one problem into a real initiative.",
-              cta: "Open The Vault",
+              href: VAULT_VIDEOS.leadership,
+              cta: "Watch the leadership series",
             },
           ],
         },
@@ -276,7 +278,8 @@ export const day3: Day = {
               kind: "vault",
               title: "Go deeper in The Vault",
               text: "The Vault walks through building the recurring block structure in Google Calendar step by step, plus the Sunday review ritual.",
-              cta: "Open The Vault",
+              href: VAULT_VIDEOS.calendar,
+              cta: "Watch the calendar walkthrough",
             },
           ],
         },
@@ -473,7 +476,8 @@ export const day3: Day = {
               kind: "vault",
               title: "Go deeper in The Vault",
               text: "Bring your leadership move to The Vault community and get feedback before you launch it.",
-              cta: "Open The Vault",
+              href: VAULT_VIDEOS.initiative,
+              cta: "Watch: launching your initiative",
             },
           ],
         },

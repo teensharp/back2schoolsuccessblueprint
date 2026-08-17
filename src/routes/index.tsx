@@ -1,3 +1,4 @@
+import logo from "@/assets/teensharp-logo.png.asset.json";
 import { Link, createFileRoute } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
 import { useEffect, useState } from "react";
@@ -73,9 +74,12 @@ function Cover() {
   return (
     <div className="space-y-10">
       <div className="overflow-hidden rounded-xl border border-forest/20 bg-forest text-forest-foreground shadow-lg">
-        <div className="border-b border-white/10 px-8 py-5">
+        <div className="flex flex-wrap items-center gap-4 border-b border-white/10 px-8 py-5">
+          <span className="rounded-md bg-brand-surface px-3 py-1.5">
+            <img src={logo.url} alt="TeenSHARP" className="h-8 w-auto" />
+          </span>
           <p className="font-display text-sm uppercase tracking-[0.3em] text-vault">
-            TeenSHARP &middot; The Vault
+            The Vault &middot; Bridge Week
           </p>
         </div>
         <div className="px-8 py-12">

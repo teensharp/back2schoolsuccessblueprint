@@ -46,6 +46,7 @@
   --color-forest: var(--forest);
   --color-forest-foreground: var(--forest-foreground);
   --color-rule: var(--rule);
+  --color-brand-surface: var(--brand-surface);
   --color-chart-1: var(--chart-1);
   --color-chart-2: var(--chart-2);
   --color-chart-3: var(--chart-3);
@@ -72,6 +73,9 @@
 
   --paper: oklch(0.985 0.01 92);
   --paper-foreground: oklch(0.235 0.045 155);
+
+  /* Constant white plate behind the TeenSHARP wordmark in both themes */
+  --brand-surface: oklch(1 0 0);
 
   --ink: oklch(0.235 0.045 155);
 
@@ -126,6 +130,7 @@
 .dark {
   --background: oklch(0.19 0.035 155);
   --foreground: oklch(0.96 0.015 95);
+  --brand-surface: oklch(1 0 0);
   --paper: oklch(0.24 0.04 155);
   --paper-foreground: oklch(0.96 0.015 95);
   --ink: oklch(0.96 0.015 95);

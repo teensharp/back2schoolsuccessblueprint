@@ -1,3 +1,5 @@
+import { VAULT_HOME } from "@/lib/brand";
+
 /**
  * "Your Next Step" offers — the TeenSHARP family product ladder, surfaced
  * contextually inside the book. Copy lives here so staff can retune wording,
@@ -35,7 +37,7 @@ export const OFFERS: Offer[] = [
     ],
     price: "$79 / year",
     cta: "Join The Vault",
-    href: "https://teensharp.org/the-vault",
+    href: VAULT_HOME,
     grades: [],
     tone: "vault",
   },

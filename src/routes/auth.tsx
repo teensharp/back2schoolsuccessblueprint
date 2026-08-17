@@ -1,3 +1,5 @@
+import logo from "@/assets/teensharp-logo.png.asset.json";
+import { ADVISING_EMAIL, WOODSON_URL } from "@/lib/brand";
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 
@@ -88,7 +90,12 @@ function AuthPage() {
   return (
     <div className="grid min-h-screen lg:grid-cols-2">
       <div className="hidden flex-col justify-between bg-forest p-12 text-forest-foreground lg:flex">
-        <p className="font-display text-sm uppercase tracking-[0.3em] text-vault">The Vault</p>
+        <div className="flex items-center gap-3">
+          <span className="rounded-md bg-brand-surface px-3 py-1.5">
+            <img src={logo.url} alt="TeenSHARP" className="h-8 w-auto" />
+          </span>
+          <p className="font-display text-sm uppercase tracking-[0.3em] text-vault">The Vault</p>
+        </div>
         <div>
           <p className="font-display text-sm uppercase tracking-[0.2em] text-vault">
             {PROGRAM_NAME}
@@ -176,6 +183,26 @@ function AuthPage() {
               ? "I already have an account"
               : "I need to create an account"}
           </button>
+
+          <p className="mt-6 border-t border-rule pt-4 text-center text-xs leading-relaxed text-muted-foreground">
+            Questions? Ask{" "}
+            <a
+              href={WOODSON_URL}
+              target="_blank"
+              rel="noreferrer"
+              className="font-semibold text-forest underline underline-offset-4"
+            >
+              Woodson
+            </a>
+            , TeenSHARP&rsquo;s virtual advisor, or email{" "}
+            <a
+              href={`mailto:${ADVISING_EMAIL}`}
+              className="font-semibold text-forest underline underline-offset-4"
+            >
+              {ADVISING_EMAIL}
+            </a>
+            .
+          </p>
         </div>
       </div>
     </div>

@@ -1,12 +1,15 @@
 import { Link, useNavigate } from "@tanstack/react-router";
-import { BookOpen, Check, LogOut, Menu } from "lucide-react";
+import { Check, LogOut, Menu } from "lucide-react";
 import { useState, type ReactNode } from "react";
 
+import logo from "@/assets/teensharp-logo.png.asset.json";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { supabase } from "@/integrations/supabase/client";
 import { DAYS, SECTION_LABELS, SECTION_ORDER, sectionKeys } from "@/lib/content/book";
 import { completionFor, type ResponseMap } from "@/lib/responses";
+
+import { HelpFooter } from "./HelpFooter";
 
 function NavContent({
   responses,
@@ -114,8 +117,10 @@ export function BookShell({
             </SheetContent>
           </Sheet>
 
-          <Link to="/" className="flex items-center gap-2">
-            <BookOpen className="h-5 w-5 text-vault" />
+          <Link to="/" className="flex items-center gap-3">
+            <span className="rounded-md bg-brand-surface px-2 py-1">
+              <img src={logo.url} alt="TeenSHARP" className="h-6 w-auto" />
+            </span>
             <span className="font-display text-base uppercase tracking-wide">
               Back-to-School Blueprint
             </span>
@@ -144,7 +149,10 @@ export function BookShell({
         <aside className="sticky top-24 hidden h-fit w-64 shrink-0 lg:block">
           <NavContent responses={responses} />
         </aside>
-        <main className="min-w-0 flex-1">{children}</main>
+        <main className="min-w-0 flex-1">
+          {children}
+          <HelpFooter />
+        </main>
       </div>
     </div>
   );
