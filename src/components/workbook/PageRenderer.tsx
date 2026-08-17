@@ -93,42 +93,79 @@ function BlockView({ block, ctx }: { block: Block; ctx: Ctx }) {
       const entries = block.from.map((key) => {
         const field = findField(key);
         const label = field && "label" in field ? (field.label ?? "") : "";
-        return { key, label, text: renderCarried(ctx.responses[key]).trim() };
+        const text = renderCarried(ctx.responses[key]).trim();
+        const words = text.split(/\s+/).filter(Boolean).length;
+        return {
+          key,
+          label: label || key,
+          href: preWorkHref(key),
+          status: words === 0 ? "missing" : words < 15 ? "thin" : "done",
+        };
       });
-      const answered = entries.filter((i) => i.text.length > 0);
-      const blank = entries.filter((i) => i.text.length === 0);
+      const total = entries.length;
+      const done = entries.filter((i) => i.status === "done").length;
+      const missing = entries.filter((i) => i.status === "missing");
+      const thin = entries.filter((i) => i.status === "thin");
+      const pct = total ? Math.round((done / total) * 100) : 0;
+      const dayNumber = Number(/^d(\d)\./.exec(block.from[0] ?? "")?.[1] ?? 0);
+
       return (
         <div className="rounded-lg border border-dashed border-forest/40 bg-vault/10 p-5">
           <p className="flex items-center gap-2 font-display text-base uppercase tracking-wide text-forest">
             <Quote className="h-4 w-4" />
-            {block.title}
+            Before you build this section
           </p>
-          {answered.length === 0 ? (
-            <p className="mt-2 text-sm text-muted-foreground">
-              Nothing carried over yet. Finish the earlier pages and your own words will show up
-              here.
+          <p className="mt-2 text-sm font-semibold text-ink">
+            You have completed {done} of {total} pre-work prompts
+            {dayNumber ? ` for Day ${dayNumber}` : ""}.
+          </p>
+          <div className="mt-2 h-2 w-full overflow-hidden rounded-full bg-forest/15">
+            <div className="h-full rounded-full bg-forest" style={{ width: `${pct}%` }} />
+          </div>
+
+          {missing.length === 0 && thin.length === 0 ? (
+            <p className="mt-3 text-sm leading-relaxed text-ink/85">
+              Your pre-work is complete &mdash; build from it, do not repeat it.
             </p>
           ) : (
-            <ul className="mt-3 space-y-3">
-              {answered.map((i) => (
-                <li key={i.key} className="text-sm leading-relaxed text-ink">
-                  {i.label ? (
-                    <span className="block font-semibold text-forest">{i.label}</span>
-                  ) : null}
-                  <span className="whitespace-pre-line">{i.text}</span>
-                </li>
-              ))}
-            </ul>
+            <>
+              <p className="mt-3 text-sm leading-relaxed text-ink/85">
+                This Lab is only as strong as the pre-work behind it. Skipped or one-line answers
+                produce a thin Blueprint. Go back, finish the work with real evidence and detail,
+                then build here.
+              </p>
+              {missing.length > 0 ? (
+                <div className="mt-4 border-t border-forest/15 pt-3">
+                  <p className="text-sm font-semibold text-forest">Not answered yet</p>
+                  <ul className="mt-1.5 list-disc space-y-1 pl-5 text-sm text-ink/85">
+                    {missing.map((i) => (
+                      <li key={i.key}>
+                        <a href={i.href} className="underline underline-offset-2 hover:text-forest">
+                          {i.label}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ) : null}
+              {thin.length > 0 ? (
+                <div className="mt-4 border-t border-forest/15 pt-3">
+                  <p className="text-sm font-semibold text-forest">Needs more depth</p>
+                  <ul className="mt-1.5 list-disc space-y-1 pl-5 text-sm text-ink/85">
+                    {thin.map((i) => (
+                      <li key={i.key}>
+                        <a href={i.href} className="underline underline-offset-2 hover:text-forest">
+                          {i.label}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ) : null}
+            </>
           )}
-          {blank.length > 0 ? (
-            <p className="mt-4 border-t border-forest/15 pt-3 text-sm text-muted-foreground">
-              Still blank in your earlier pages:{" "}
-              {blank.map((i) => i.label || i.key).join(" \u00b7 ")}
-            </p>
-          ) : null}
         </div>
       );
-
     }
 
     case "recap":
