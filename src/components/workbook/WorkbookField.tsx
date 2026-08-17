@@ -329,6 +329,8 @@ function WorkbookTable({
         </table>
       </div>
 
+      {field.totalColumn ? <TableTotal field={field} rows={rows} /> : null}
+
       {field.addRows ? (
         <Button type="button" variant="ghost" size="sm" className="mt-2 text-forest" onClick={addRow}>
           <Plus className="mr-1 h-4 w-4" /> Add row
@@ -337,6 +339,46 @@ function WorkbookTable({
     </div>
   );
 }
+
+function TableTotal({
+  field,
+  rows,
+}: {
+  field: Extract<Field, { kind: "table" }>;
+  rows: TableRow[];
+}) {
+  const col = field.totalColumn!;
+  const total = rows.reduce((sum, r) => {
+    const n = Number.parseFloat((r[col] ?? "").replace(/[^0-9.]/g, ""));
+    return sum + (Number.isFinite(n) ? n : 0);
+  }, 0);
+  const min = field.targetMin;
+  const max = field.targetMax;
+  const short = min !== undefined && total < min;
+  const over = max !== undefined && total > max;
+
+  return (
+    <div
+      className={`mt-2 flex flex-wrap items-baseline justify-between gap-2 rounded-md border px-4 py-3 ${
+        short ? "border-destructive/40 bg-destructive/5" : "border-forest/25 bg-vault/15"
+      }`}
+    >
+      <p className="text-sm font-semibold text-forest">
+        {field.totalLabel ?? "Total"}: {Math.round(total * 10) / 10}
+      </p>
+      {min !== undefined ? (
+        <p className="text-sm text-ink/80">
+          {short
+            ? `You are ${Math.round((min - total) * 10) / 10} short of the ${min}\u2013${max ?? min} hour standard. Find the hours \u2014 weekends included.`
+            : over
+              ? `Above the ${min}\u2013${max} hour range. Check that rest and family time are still protected.`
+              : `On target for the ${min}\u2013${max ?? min} hour standard.`}
+        </p>
+      ) : null}
+    </div>
+  );
+}
+
 
 function TableCell({
   column,
