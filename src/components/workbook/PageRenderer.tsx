@@ -1,4 +1,4 @@
-import { ExternalLink, ListChecks, Quote } from "lucide-react";
+import { ExternalLink, ListChecks } from "lucide-react";
 
 import { VAULT_HOME } from "@/lib/brand";
 import { BEHAVIOR_DEFINITIONS, type BehaviorName } from "@/lib/content/behaviors";
