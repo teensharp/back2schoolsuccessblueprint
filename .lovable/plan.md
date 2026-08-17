@@ -13,8 +13,8 @@ Right now the "Go deeper in The Vault" boxes invent titles ("Building Habits Tha
 - Rewrite every Vault box so it names the actual video title and a one-line, accurate reason to watch it — no invented series names, playbooks, or libraries.
 - Match each of the nine placements to whichever of the four videos fits best:
   - Day 1 pre-work and lab: Camila (mindset reset)
-  - Day 2 pre-work and lab: Aja (leveling up curriculum) and Dami (learning/mastery)
-  - Day 3: Camila and Aja, framed around ownership and rigor
+  - Day 2 pre-work and lab: Aja (leveling up curriculum), plus Camila on the study-systems box
+  - Day 3: Dami on all three boxes (deep learning, time, and initiative)
   - Day 4: Rafael (managing an intense senior year and applications)
 - Keep the box heading as "Go deeper in The Vault" and show the real video title as the link/CTA text so students know what they are opening.
 
