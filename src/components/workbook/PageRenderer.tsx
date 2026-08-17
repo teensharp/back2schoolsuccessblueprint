@@ -42,10 +42,6 @@ function renderCarried(value: unknown): string {
   return "";
 }
 
-function preWorkHref(key: string): string {
-  const day = /^d(\d)\./.exec(key)?.[1] ?? "1";
-  return `/day/${day}/pre-work`;
-}
 
 function BlockView({ block, ctx }: { block: Block; ctx: Ctx }) {
   switch (block.kind) {
