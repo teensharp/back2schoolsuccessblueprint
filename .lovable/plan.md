@@ -134,7 +134,23 @@ A third pre-work assignment on Wednesday. The student builds a real, fully block
 
 **Carries forward:** the weekly review block and the study block plan feed the Blueprint Lab and the calendar export, so the review ritual and the fixed study blocks land on the student's real calendar alongside Day 4's opportunity milestones.
 
+## Part F — Session Recap box from the TeenSHARP team
+
+Each day's session notes page gets a "From the TeenSHARP Team" box that holds the official recap of that live session. It is separate from the student's own AI end-of-day analysis: this one is written once for the whole cohort, not per student.
+
+**What students see** — a branded box at the top of the session notes page (and repeated at the top of that day's Blueprint Lab) with the recap: the key points from the session, what the team wants students to take away, and the action expected before tomorrow. Until the team publishes it, students see a quiet placeholder: "Your session recap will be posted here after today's session." Once published, a posted timestamp shows, and students can copy it into their own notes with one click so it becomes part of their exported Blueprint.
+
+**How it gets written** — staff-only, from the admin dashboard. For each day, staff can:
+- Draft the recap with AI: paste or dictate raw session notes / a transcript, and the model returns a structured recap (key points, takeaways, tonight's action) in the workbook's rigor voice.
+- Edit it freely before publishing — nothing goes out unreviewed.
+- Publish, unpublish, and revise; students always see the latest published version.
+
+Optionally, staff can generate it from the cohort's own answers for that day, so the recap names patterns the team actually saw in student responses.
+
+**Cost** — a handful of staff-triggered generations per day for the entire cohort, not per student. Negligible.
+
 ## Technical notes
+
 
 
 
@@ -151,3 +167,6 @@ A third pre-work assignment on Wednesday. The student builds a real, fully block
 - Day 3 pre-work Part 3 lives under `d3.pw.cal.*` in `src/lib/content/day3.ts`; the study-hour total is computed client-side from the per-day table and compared against the 30-35 range.
 - The uploaded calendar screenshot is added as a Lovable asset and rendered through a new image/example block kind in `PageRenderer.tsx`, so more reference screenshots can be added later without code changes.
 - Recurring study blocks and the weekly review block are emitted by `src/lib/ics.ts` as weekly-recurring events.
+- New `session_summaries` table (day, title, body, published flag, published_at, author). Grants plus RLS: any authenticated student can read published rows; only staff/admin can insert, update, or unpublish. Students never write to it.
+- Staff drafting runs through a new server function on the Lovable AI gateway using `google/gemini-3.6-flash`, called only after a staff role check; the result is stored as an editable draft, never auto-published.
+- The recap box renders as a new block kind in `PageRenderer.tsx`, fed by a query on `session_summaries` for the current day; the admin editor lives as a tab on `/admin`.
