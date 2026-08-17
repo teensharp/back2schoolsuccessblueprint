@@ -429,6 +429,40 @@ function TableCell({
     );
   }
 
+  if (column.type === "number") {
+    return (
+      <Input
+        inputMode="decimal"
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+        className="h-8 w-20 border-0 bg-transparent px-2 text-sm shadow-none focus-visible:ring-1"
+      />
+    );
+  }
+
+  if (column.type === "date") {
+    return (
+      <Input
+        type="date"
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+        className="h-8 border-0 bg-transparent px-2 text-sm shadow-none focus-visible:ring-1"
+      />
+    );
+  }
+
+  if (column.type === "check") {
+    return (
+      <div className="flex justify-center">
+        <Checkbox
+          checked={value === "yes"}
+          onCheckedChange={(c) => onChange(c ? "yes" : "")}
+          aria-label={column.label}
+        />
+      </div>
+    );
+  }
+
   return (
     <Input
       value={value}
@@ -437,3 +471,4 @@ function TableCell({
     />
   );
 }
+
