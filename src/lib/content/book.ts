@@ -2,7 +2,7 @@ import { day1 } from "./day1";
 import { day2 } from "./day2";
 import { day3 } from "./day3";
 import { day4 } from "./day4";
-import { pageFields, type Day, type Page, type SectionId } from "./types";
+import { pageFields, type Day, type Field, type Page, type SectionId } from "./types";
 
 export const DAYS: Day[] = [day1, day2, day3, day4];
 
@@ -51,4 +51,15 @@ export function sectionKeys(day: number, section: SectionId): string[] {
 /** Flat ordered list of every page in the book, for prev/next navigation. */
 export function bookOrder(): { day: number; section: SectionId }[] {
   return DAYS.flatMap((d) => SECTION_ORDER.map((s) => ({ day: d.day, section: s })));
+}
+
+/** Finds a field anywhere in the book by its storage key. */
+export function findField(key: string): Field | undefined {
+  for (const d of DAYS) {
+    for (const s of SECTION_ORDER) {
+      const found = pageFields(d.pages[s]).find((f) => f.key === key);
+      if (found) return found;
+    }
+  }
+  return undefined;
 }
