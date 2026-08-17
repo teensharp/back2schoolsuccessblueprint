@@ -373,13 +373,6 @@ export const day4: Day = {
                 { key: "shows", label: "What it shows about me", type: "long" },
               ],
             }),
-            {
-              kind: "vault",
-              title: "Keep this alive in The Vault",
-              text: "Rafael's senior year shows why a calendar like this has to survive past the first busy week.",
-              href: VAULT_VIDEOS.rafael.href,
-              cta: `Watch: ${VAULT_VIDEOS.rafael.title}`,
-            },
           ],
         },
       ],

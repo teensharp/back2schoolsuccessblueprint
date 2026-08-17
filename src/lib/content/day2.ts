@@ -712,13 +712,6 @@ export const day2: Day = {
               ],
             }),
             {
-              kind: "vault",
-              title: "Go deeper in The Vault",
-              text: "Camila breaks down how she rebuilt her weekly habits, not just her intentions.",
-              href: VAULT_VIDEOS.camila.href,
-              cta: `Watch: ${VAULT_VIDEOS.camila.title}`,
-            },
-            {
               kind: "offer",
               id: "strategy-session",
               placement: "d2.lab.roadmap",

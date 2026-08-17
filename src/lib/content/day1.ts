@@ -674,13 +674,6 @@ export const day1: Day = {
                 { key: "date", label: "Do it by (date)", type: "text" },
               ],
             }),
-            {
-              kind: "vault",
-              title: "Go deeper in The Vault",
-              text: "Camila's story shows what it takes to protect a plan like this once school actually starts.",
-              href: VAULT_VIDEOS.camila.href,
-              cta: `Watch: ${VAULT_VIDEOS.camila.title}`,
-            },
           ],
         },
       ],
