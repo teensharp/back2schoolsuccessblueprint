@@ -134,7 +134,6 @@ const part2: Part = {
   number: "Part 2",
   title: "My Behavior Pattern Reflection",
   blocks: [
-    { kind: "video", label: "Watch this video before answering these questions." },
     { kind: "subhead", text: "My Strongest Guiding Behavior" },
     f({
       kind: "select",
@@ -210,7 +209,6 @@ const part3: Part = {
   number: "Part 3",
   title: "What Helped Me, What Hurt Me, and What Got in the Way",
   blocks: [
-    { kind: "video", label: "Watch this video before responding to these questions." },
     { kind: "subhead", text: "What Helped Me Succeed?" },
     f({
       kind: "checklist",
@@ -393,7 +391,6 @@ const part4: Part = {
   number: "Part 4",
   title: "My Start / Stop / Strengthen Reset",
   blocks: [
-    { kind: "video", label: "Watch this video before answering these questions." },
     { kind: "subhead", text: "What I Need to Start" },
     f({
       kind: "table",
