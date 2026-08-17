@@ -453,9 +453,9 @@ export const day2: Day = {
             {
               kind: "vault",
               title: "Go deeper in The Vault",
-              text: "Watch \u201cWhat Admission Officers Actually Read\u201d in The Vault before Tuesday's session.",
-              href: VAULT_VIDEOS.admissions,
-              cta: "Watch it in The Vault",
+              text: "Aja explains why she chose the harder course load and how she carried it — useful before you defend your own roadmap.",
+              href: VAULT_VIDEOS.aja.href,
+              cta: `Watch: ${VAULT_VIDEOS.aja.title}`,
             },
           ],
         },
@@ -714,9 +714,9 @@ export const day2: Day = {
             {
               kind: "vault",
               title: "Go deeper in The Vault",
-              text: "The Vault's study systems series shows exactly how strong students structure a week.",
-              href: VAULT_VIDEOS.studySystems,
-              cta: "Watch the study systems series",
+              text: "Camila breaks down how she rebuilt her weekly habits, not just her intentions.",
+              href: VAULT_VIDEOS.camila.href,
+              cta: `Watch: ${VAULT_VIDEOS.camila.title}`,
             },
             {
               kind: "offer",
