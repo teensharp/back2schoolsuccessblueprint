@@ -439,9 +439,9 @@ const part4: Part = {
     {
       kind: "vault",
       title: "Go deeper in The Vault",
-      text: "Watch \u201cBuilding Habits That Stick\u201d in The Vault before Monday's session to sharpen your reset plan.",
-      href: VAULT_VIDEOS.habits,
-      cta: "Watch it in The Vault",
+      text: "Camila describes the exact mindset change behind her turnaround — watch it before Monday's session and name the change you need to make.",
+      href: VAULT_VIDEOS.camila.href,
+      cta: `Watch: ${VAULT_VIDEOS.camila.title}`,
     },
   ],
 };
@@ -677,9 +677,9 @@ export const day1: Day = {
             {
               kind: "vault",
               title: "Go deeper in The Vault",
-              text: "The Vault's Reset Playbook walks through how to protect a plan like this in the first month of school.",
-              href: VAULT_VIDEOS.reset,
-              cta: "Watch the Reset Playbook",
+              text: "Camila's story shows what it takes to protect a plan like this once school actually starts.",
+              href: VAULT_VIDEOS.camila.href,
+              cta: `Watch: ${VAULT_VIDEOS.camila.title}`,
             },
           ],
         },
