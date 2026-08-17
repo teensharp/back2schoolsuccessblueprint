@@ -213,8 +213,9 @@ function BlockView({ block, ctx }: { block: Block; ctx: Ctx }) {
     }
 
     case "group": {
-
+      const definition =
         block.definition ?? BEHAVIOR_DEFINITIONS[block.title as BehaviorName] ?? undefined;
+
       return (
         <section className="rounded-lg border border-rule bg-card p-5 shadow-sm">
           <div className="mb-3 flex items-baseline gap-3">
