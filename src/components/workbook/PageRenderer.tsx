@@ -1,9 +1,12 @@
-import { ExternalLink, Quote } from "lucide-react";
+import { ExternalLink, ListChecks, Quote } from "lucide-react";
 
 import { BEHAVIOR_DEFINITIONS, type BehaviorName } from "@/lib/content/behaviors";
+import { findField } from "@/lib/content/book";
 import type { Block, Page, Part } from "@/lib/content/types";
 import { isAnswered, type ResponseMap } from "@/lib/responses";
 
+import { OfferCard } from "./OfferCard";
+import { RecapBox } from "./RecapBox";
 import { WorkbookField } from "./WorkbookField";
 
 const VAULT_URL = "https://teensharp.org/the-vault";
@@ -11,7 +14,10 @@ const VAULT_URL = "https://teensharp.org/the-vault";
 type Ctx = {
   responses: ResponseMap;
   onChange: (key: string, value: unknown) => void;
+  userId?: string | undefined;
+  grade?: string | null | undefined;
 };
+
 
 function renderCarried(value: unknown): string {
   if (typeof value === "string") return value;
