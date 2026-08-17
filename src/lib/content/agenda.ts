@@ -15,14 +15,6 @@ export type AgendaDay = {
   items: AgendaItem[];
 };
 
-export const HELPFUL_LINKS = [
-  { label: "Back-to-School Success Week Zoom Link", href: "#" },
-  { label: "Summer Learning Symposium Slide", href: "#" },
-  { label: "Padlet", href: "#" },
-  { label: "Back-to-School Success Week Course", href: "#" },
-  { label: "Spotify Playlist", href: "#" },
-];
-
 export const AGENDA_NOTE = "All times indicated in the agenda are Eastern Standard Time.";
 
 export const AGENDA: AgendaDay[] = [

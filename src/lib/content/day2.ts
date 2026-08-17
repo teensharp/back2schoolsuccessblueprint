@@ -230,6 +230,19 @@ export const day2: Day = {
               id: "vault",
               placement: "d2.pre-work.4.0-evaluation",
             },
+            {
+              kind: "subhead",
+              text: "Summer Learning Symposium",
+            },
+            {
+              kind: "note",
+              text: "Review the Summer Learning Symposium slide before Tuesday's session so you know what your peers presented and how their summer work connects to the academic record you are building.",
+            },
+            {
+              kind: "video",
+              label: "Summer Learning Symposium Slide",
+              href: "https://teensharp.org",
+            },
           ],
         },
         {

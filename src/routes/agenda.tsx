@@ -1,8 +1,7 @@
 import { Link, createFileRoute } from "@tanstack/react-router";
-import { ExternalLink } from "lucide-react";
 
 import { BookPage } from "@/components/workbook/BookPage";
-import { AGENDA, AGENDA_NOTE, HELPFUL_LINKS } from "@/lib/content/agenda";
+import { AGENDA, AGENDA_NOTE } from "@/lib/content/agenda";
 import { BEHAVIORS, BEHAVIOR_DEFINITIONS } from "@/lib/content/behaviors";
 import { PROGRAM_DATES } from "@/lib/content/book";
 
@@ -104,23 +103,6 @@ function Agenda() {
         </div>
       </section>
 
-      <section>
-        <h2 className="font-display text-2xl uppercase tracking-wide text-forest">Helpful Links</h2>
-        <div className="mt-3 flex flex-wrap gap-2">
-          {HELPFUL_LINKS.map((l) => (
-            <a
-              key={l.label}
-              href={l.href}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-1.5 rounded-full border border-forest/30 bg-paper px-4 py-2 text-sm font-semibold text-forest hover:bg-forest/5"
-            >
-              {l.label}
-              <ExternalLink className="h-3.5 w-3.5" />
-            </a>
-          ))}
-        </div>
-      </section>
-    </div>
+   </div>
   );
 }
