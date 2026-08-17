@@ -136,14 +136,10 @@ function BlockView({ block, ctx }: { block: Block; ctx: Ctx }) {
       return <RecapBox day={block.day} section={block.section ?? "session"} />;
 
     case "offer":
-      return (
-        <OfferCard
-          id={block.id}
-          placement={block.placement}
-          userId={ctx.userId}
-          grade={ctx.grade}
-        />
-      );
+      // "Your Next Step" upsell cards are hidden for now. Restore by rendering
+      // <OfferCard id={block.id} placement={block.placement} userId={ctx.userId} grade={ctx.grade} />
+      return null;
+
 
     case "image":
       return (
