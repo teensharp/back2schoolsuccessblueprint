@@ -10,8 +10,20 @@
 export type TableColumn = {
   key: string;
   label: string;
-  /** "text" = single line, "long" = textarea, "behaviors" = guiding-behavior checkboxes */
-  type?: "text" | "long" | "behaviors";
+  /**
+   * "text" = single line, "long" = textarea, "behaviors" = guiding-behavior
+   * checkboxes, "number" = numeric cell (can feed a live total),
+   * "check" = a single done/not-done box, "date" = YYYY-MM-DD.
+   */
+  type?: "text" | "long" | "behaviors" | "number" | "check" | "date";
+};
+
+/** A scoring band shown live under a yes/no self-evaluation. */
+export type Band = {
+  /** Inclusive lower bound of "yes" answers. */
+  min: number;
+  label: string;
+  text: string;
 };
 
 export type Field =
@@ -33,7 +45,17 @@ export type Field =
       other?: boolean;
       prefillFrom?: string;
     }
-  | { kind: "agree"; key: string; label?: string; statements: string[] }
+  | {
+      kind: "agree";
+      key: string;
+      label?: string;
+      statements: string[];
+      /** Defaults to Agree/Disagree. The 4.0 Challenge uses Yes/No. */
+      choices?: [string, string];
+      /** Show a live count of the first choice, with bands. */
+      score?: boolean;
+      bands?: Band[];
+    }
   | {
       kind: "table";
       key: string;
@@ -44,6 +66,12 @@ export type Field =
       examples?: { label: string; text: string }[];
       examplesTitle?: string;
       prefillFrom?: string;
+      /** Column key whose numeric values are summed and shown under the table. */
+      totalColumn?: string;
+      totalLabel?: string;
+      /** Target range for the total, e.g. 30-35 study hours. */
+      targetMin?: number;
+      targetMax?: number;
     };
 
 export type Block =
@@ -53,6 +81,20 @@ export type Block =
   | { kind: "video"; label: string; href?: string }
   | { kind: "vault"; title: string; text: string; href?: string; cta?: string }
   | { kind: "carry"; from: string[]; title: string }
+  /** Staff-written recap of the live session, published from the dashboard. */
+  | { kind: "recap"; day: number; section?: string }
+  /** Contextual "Your Next Step" offer, routed by the student's grade. */
+  | { kind: "offer"; id: string; placement: string }
+  /** A reference image with a caption, e.g. the model Google Calendar. */
+  | { kind: "image"; src: string; alt: string; caption?: string }
+  /** Auto-built list of every statement the student answered "No" to. */
+  | { kind: "fixlist"; title: string; from: string[]; intro?: string }
+  /** Numbered principles with an explanation and a worked example. */
+  | {
+      kind: "principles";
+      title?: string;
+      items: { title: string; text: string; example?: string }[];
+    }
   | {
       kind: "group";
       letter?: string;
@@ -62,6 +104,7 @@ export type Block =
       blocks: Block[];
     }
   | ({ kind: "field" } & { field: Field });
+
 
 export type Part = {
   id: string;
