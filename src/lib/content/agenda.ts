@@ -37,7 +37,7 @@ export const AGENDA: AgendaDay[] = [
         time: "2:40 PM",
         title: "What Top Students Do Differently",
         detail:
-          "A panel conversation with Arely Reyes, TeenSHARP '25, Amherst College '29 and Aanyae Anderson, TeenSHARP '25, Wake Forest University '29",
+          "A panel conversation with Arely Reyes, TeenSHARP '25, Amherst College '29; Aanyae Anderson, TeenSHARP '25, Wake Forest University '29; and Justin Dorce, TeenSHARP '25, Washington University in St. Louis '29",
         by: "Ms. Sara Petty",
         kind: "session",
       },
