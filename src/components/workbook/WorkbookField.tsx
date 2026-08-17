@@ -165,6 +165,13 @@ export function WorkbookField({ field, responses, onChange }: Props) {
 
   if (field.kind === "agree") {
     const current = (value ?? {}) as Record<string, string>;
+    const choices = field.choices ?? (["Agree", "Disagree"] as [string, string]);
+    const yesCount = field.statements.filter((_, i) => current[String(i)] === choices[0]).length;
+    const answered = field.statements.filter((_, i) => current[String(i)]).length;
+    const band = field.bands
+      ? [...field.bands].sort((a, b) => b.min - a.min).find((b) => yesCount >= b.min)
+      : undefined;
+
     return (
       <div>
         {field.label ? <FieldLabel>{field.label}</FieldLabel> : null}
@@ -179,7 +186,7 @@ export function WorkbookField({ field, responses, onChange }: Props) {
               >
                 <span className="text-sm leading-snug">{s}</span>
                 <div className="flex shrink-0 gap-1.5">
-                  {(["Agree", "Disagree"] as const).map((choice) => (
+                  {choices.map((choice) => (
                     <button
                       key={choice}
                       type="button"
@@ -203,12 +210,29 @@ export function WorkbookField({ field, responses, onChange }: Props) {
             );
           })}
         </div>
+        {field.score ? (
+          <div className="mt-2 rounded-md border border-forest/25 bg-vault/15 px-4 py-3">
+            <p className="text-sm font-semibold text-forest">
+              {choices[0]}: {yesCount} of {field.statements.length}
+              <span className="ml-2 font-normal text-muted-foreground">
+                ({answered} of {field.statements.length} answered)
+              </span>
+            </p>
+            {band ? (
+              <p className="mt-1 text-sm leading-relaxed text-ink">
+                <span className="font-semibold">{band.label}. </span>
+                {band.text}
+              </p>
+            ) : null}
+          </div>
+        ) : null}
       </div>
     );
   }
 
   return <WorkbookTable field={field} value={value} onChange={onChange} carried={useCarried} />;
 }
+
 
 function WorkbookTable({
   field,
