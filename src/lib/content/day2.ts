@@ -1,3 +1,4 @@
+import { VAULT_VIDEOS } from "@/lib/brand";
 import { f, type Day } from "./types";
 
 const TEXTBOOK_SCRIPT =
@@ -440,7 +441,8 @@ export const day2: Day = {
               kind: "vault",
               title: "Go deeper in The Vault",
               text: "Watch \u201cWhat Admission Officers Actually Read\u201d in The Vault before Tuesday's session.",
-              cta: "Open The Vault",
+              href: VAULT_VIDEOS.admissions,
+              cta: "Watch it in The Vault",
             },
           ],
         },
@@ -695,7 +697,8 @@ export const day2: Day = {
               kind: "vault",
               title: "Go deeper in The Vault",
               text: "The Vault's study systems series shows exactly how strong students structure a week.",
-              cta: "Open The Vault",
+              href: VAULT_VIDEOS.studySystems,
+              cta: "Watch the study systems series",
             },
             {
               kind: "offer",

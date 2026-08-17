@@ -1,3 +1,4 @@
+import { VAULT_VIDEOS } from "@/lib/brand";
 import { PROGRAM_CATALOG } from "./programs";
 import { f, type Block, type Day } from "./types";
 
@@ -113,7 +114,8 @@ export const day4: Day = {
               kind: "vault",
               title: "Go deeper in The Vault",
               text: "The Vault's opportunity library and application walkthroughs are the fastest way to build this list.",
-              cta: "Open The Vault",
+              href: VAULT_VIDEOS.opportunities,
+              cta: "Watch the opportunity walkthrough",
             },
           ],
         },
@@ -367,7 +369,8 @@ export const day4: Day = {
               kind: "vault",
               title: "Keep this alive in The Vault",
               text: "The Vault keeps the deadlines, essay feedback, and application support coming all year \u2014 this plan does not have to sit on a shelf.",
-              cta: "Open The Vault",
+              href: VAULT_VIDEOS.applications,
+              cta: "Watch: keeping the plan alive",
             },
           ],
         },
