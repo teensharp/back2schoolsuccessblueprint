@@ -2,6 +2,8 @@ import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
 import { useEffect } from "react";
 
+import { OfferEngagement } from "@/components/admin/OfferEngagement";
+import { RecapEditor } from "@/components/admin/RecapEditor";
 import { Progress } from "@/components/ui/progress";
 import { supabase } from "@/integrations/supabase/client";
 import { DAYS, SECTION_LABELS, SECTION_ORDER, sectionKeys } from "@/lib/content/book";
@@ -101,7 +103,7 @@ function AdminPage() {
         </p>
       </header>
 
-      <div className="mx-auto max-w-7xl px-6 py-8">
+      <div className="mx-auto max-w-7xl space-y-12 px-6 py-8">
         {students.isLoading ? (
           <p className="text-sm text-muted-foreground">Loading student progress\u2026</p>
         ) : list.length === 0 ? (
@@ -177,6 +179,10 @@ function AdminPage() {
             </table>
           </div>
         )}
+
+        {user?.id ? <RecapEditor authorId={user.id} /> : null}
+
+        <OfferEngagement />
       </div>
     </div>
   );
