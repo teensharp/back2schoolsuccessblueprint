@@ -549,7 +549,7 @@ export const day2: Day = {
       parts: [
         {
           id: "carry",
-          title: "What you already said",
+          title: "Before you build this section",
           blocks: [
             {
               kind: "carry",
