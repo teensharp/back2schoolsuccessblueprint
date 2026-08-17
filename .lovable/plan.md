@@ -101,7 +101,41 @@ The table gives those milestones as prompted rows with suggested lead times pre-
 - The first milestone due, its date, and what happens the day I miss it.
 - Who I am telling about this plan so someone else knows my dates.
 
+## Part E — Day 3 Pre-Work Part 3: Design My Weekly Calendar
+
+A third pre-work assignment on Wednesday. The student builds a real, fully blocked weekly calendar in Google Calendar and documents it here. This is not a worksheet about time management — the deliverable is a calendar with no blank space in it.
+
+**The principles, stated in full on the page with examples** (each principle gets a short explanation, a concrete example, and the common excuse it kills):
+
+1. **Give every minute a job.** From wake-up to bedtime, every block is assigned, driven by yearly, monthly, weekly, and daily goals. Personal life is scheduled too — dinner, rest, family time, workouts, faith, chores. Practically: your Google Calendar should have no blank space.
+2. **30–35 hours of study and homework per week.** This is time for mastering content and applying the study techniques from this week — spaced repetition, retrieval practice, interleaving. Those techniques cost hours; the hours have to be visible on the calendar.
+3. **Weekends are purposeful.** You cannot reach 30–35 hours without them. Decide deliberately how much rest you need, then use the rest of the weekend on purpose. Learning is not a chore — treated as exciting and restorative, weekend academic blocks stop feeling like punishment.
+4. **If it is not on the calendar, it will not get done.** Anything you tell someone you will do goes on the calendar the moment you say it.
+5. **Goals → to-do list → calendar.** Calendaring comes last. Set goals, derive this week's and today's to-dos from them, then place every to-do in a block.
+6. **Evaluate weekly.** Repeat blocks week over week, but review them: what needed more time, what needed less, what did not happen. The failure pattern named explicitly: a student doing badly in a subject who changes nothing about how much time or what method they use, and expects a different grade.
+7. **Pre-schedule; do not wait for assignments.** "I can't schedule because I don't know when my tests are" is against the science of learning. Whether a test or assignment exists should change nothing about your study blocks. Build systems that hold up against your human nature instead of relying on how you feel that day.
+
+**Reference images** — the uploaded screenshot of a fully blocked student week is shown on the page as the model to match, annotated with what to notice: every hour assigned, transit and meals included, study blocks named by subject and task, recurring blocks, deadlines pinned at the top. More screenshots can be dropped in the same gallery later.
+
+**The assignment, in order:**
+
+- **Goals first** — a table: yearly goal, the monthly milestone that serves it, this week's target. Add-row, minimum three goals across academics, leadership/service, and personal.
+- **This week's to-do list** — add-row table: to-do, which goal it serves, estimated time, priority. Nothing goes on the calendar that is not tied to a goal.
+- **Non-negotiables and routines** — the fixed frame: wake time, bedtime, school hours, transit, meals, family time, faith or community commitments, job, practice. Time in, time out, days.
+- **Study block plan** — a per-day table (Mon–Sun): hours of study/homework blocked, subjects and the specific technique used in each block. A live total shows hours against the 30–35 target and will not read as met until the total lands in range, with weekend hours counted separately so the student sees whether the weekend is actually working.
+- **Rest, honestly** — how much rest they need, when it is scheduled, and what they are choosing not to do to make the study hours real.
+- **Build it in Google Calendar** — the instruction to enter every block, use recurring events, and color-code. A confirmation checklist: every block entered, no blank space between wake and bed, study hours match the plan, weekends filled purposefully, recurring set. Then a link field for a screenshot or share link of their finished week.
+- **Weekly evaluation ritual** — they schedule a recurring 20-minute weekly review block, name the day and time, and answer in advance what they will check each week: what ran over, what got skipped, which subject's results are not matching its hours, what changes next week.
+
+**Debrief prompts, at the Part A rigor bar:**
+- The blank space in my old week: where the hours actually went, and what that cost me in grades last year.
+- Three things I had to give up to reach 30–35 hours, and why each is worth it.
+- The point in the week most likely to collapse first, and the system I have in place for when it does.
+
+**Carries forward:** the weekly review block and the study block plan feed the Blueprint Lab and the calendar export, so the review ritual and the fixed study blocks land on the student's real calendar alongside Day 4's opportunity milestones.
+
 ## Technical notes
+
 
 
 - All wording lives in `src/lib/content/day1.ts` through `day4.ts`; no component logic changes beyond the new score computation.
@@ -114,3 +148,6 @@ The table gives those milestones as prompted rows with suggested lead times pre-
 - `src/lib/ics.ts` is extended to emit milestone events as well as deadlines; Google Calendar template links are generated per row.
 
 
+- Day 3 pre-work Part 3 lives under `d3.pw.cal.*` in `src/lib/content/day3.ts`; the study-hour total is computed client-side from the per-day table and compared against the 30-35 range.
+- The uploaded calendar screenshot is added as a Lovable asset and rendered through a new image/example block kind in `PageRenderer.tsx`, so more reference screenshots can be added later without code changes.
+- Recurring study blocks and the weekly review block are emitted by `src/lib/ics.ts` as weekly-recurring events.
