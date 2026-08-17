@@ -1,38 +1,45 @@
-# PDF export + a real staff back end
+# Add the 4.0 Challenge Self-Evaluation to Day 2 pre-work
 
-## Where things stand today
+The uploaded self-evaluation becomes the opening part of Tuesday's pre-work, and its results feed the rest of Day 2 and the College-Ready Roadmap lab.
 
-- The Blueprint page exports by calling the browser's print dialog with print styles, so a student gets a PDF only by choosing "Save as PDF" in that dialog. There is no download button that produces a file directly.
-- The staff dashboard at `/admin` lists every student with a name, school, grade, an overall percentage, and a percentage per day/section. There is no way to open a student and read their actual answers, no CSV download, and no screen for granting staff access — staff roles exist in the database but can only be set by hand.
+## New Part 1: My 4.0 Challenge Self-Evaluation
 
-## 1. Student PDF of the plan
+A date field, the instruction "Only answer yes if the statement applies to all subjects you are currently taking," then the seven categories exactly as written, each as a Yes/No row per statement:
 
-Add a "Download my Blueprint (PDF)" button that generates a real file, no print dialog:
+1. **Learning Tools** (2 statements)
+2. **Study Habits** (3)
+3. **Time Management** (4)
+4. **Organization** (4)
+5. **Teacher Relations** (5)
+6. **Learning Supports** (3)
 
-- A branded multi-page document: cover with the student's name, school, grade and the week dates; then one section per day (Reset, College-Ready Roadmap, Leadership Playbook, Opportunity Blueprint); then the commitments and deadline calendar; closing page with the Vault invitation.
-- Only answered items are printed, so a partly finished book still exports cleanly.
-- Filename uses the student's name, e.g. `Back-to-School-Blueprint-Jordan-Smith.pdf`.
-- The existing print styles stay as a fallback for anyone who prefers printing.
+Each category shows a live "yes" score as the student answers (e.g. 3 of 4), plus a total 4.0 Challenge score at the bottom with a short band label — solid foundation / mixed / needs a rebuild — so the number means something.
 
-## 2. Staff back end
+**Takeaways** (the document's three prompts, as written):
+- What have you learned from filling out this sheet?
+- Do you believe you have the whatever-it-takes mindset based on your answers?
+- What changes do you need to implement in your academic routine?
 
-Keep `/admin` as the roster, and add:
+Note: the source document numbers Learning Supports 3-5 with no 1-2. Those three statements are kept as-is and simply renumbered 1-3.
 
-**Registration view** — sign-up date column, plus counts at the top: total registered, started, and finished. Sortable by name, school, grade, progress, and last activity.
+## Building on it
 
-**Open any student** — click a row to read their whole book: every question with their answer, day by day, laid out like the workbook. Read-only. Includes their AI end-of-day reflections.
+- **My weakest categories** — the two lowest-scoring categories are surfaced automatically, with a prompt on why each is weakest and what it is costing them in grades.
+- **My "No" list into fixes** — a table pre-populated with the statements they answered No to: what I will do instead, when, and starting date. This is the actionable bridge the paper sheet does not have.
+- The existing Day 2 pre-work parts (Course Trajectory, Grades, How I Learn, Teacher Relationships) stay, renumbered after this one. Overlapping questions in "How I Actually Learn" and "My Teacher Relationships" are trimmed so students are not answering the same thing twice.
 
-**Highlights** — per student, a short panel pulling the answers staff care about most: their strongest guiding behavior, biggest reset area, first-two-weeks commitments, hardest-class plan, leadership move, and committed opportunities with deadlines. This is the "at a glance" view for a coach before a check-in call.
+## Feeding the Blueprint Lab
 
-**Cohort highlights** — on the roster page, aggregate counts: how many picked each guiding behavior as strongest, how many as their reset area, most common derailers, and the most-selected opportunities. Useful for shaping the live sessions mid-week.
+Tuesday's Blueprint Lab gains:
+- The 4.0 score and weakest categories carried in as read-only context.
+- The Study and Time Strategy table pre-filled from their "No" list fixes.
+- A new "My 4.0 Habits" commitment block: three habits from the evaluation they will run for the first two weeks, each with a day/time.
 
-**CSV export** — one row per student with profile, per-section completion, and the key highlight answers, for sharing outside the app.
-
-**Staff access** — an admin-only screen to promote an existing account to staff by email, so you are not editing the database by hand. The first admin is set up during this build.
+The score and weakest categories also appear on the final Blueprint page and in the exported plan.
 
 ## Technical notes
 
-- PDF generated client-side with `jspdf` so nothing runs server-side per student; text is laid out with the workbook fonts, page breaks handled per section.
-- Student detail and highlights read through the existing staff `SELECT` policies (`is_staff(auth.uid())`) on `profiles`, `responses`, and `ai_summaries` — no schema change needed.
-- Sign-up date comes from `profiles.created_at`; last activity from the newest `responses.updated_at` per student.
-- Role promotion goes through an authenticated server function that verifies the caller is an admin before inserting into `user_roles`; the table stays closed to direct client writes.
+- Content added to `src/lib/content/day2.ts` using the existing field kinds; Yes/No rows use the existing `agree` field kind with Yes/No labels, keyed `d2.pw.eval.*`.
+- Scores are computed in the renderer from saved answers — no new storage, no schema change.
+- New keys only (nothing renamed), so answers already saved on Day 2 are preserved.
+- Weakest-category and No-list logic is pure client-side derivation from the response map, reusing the existing carry/prefill mechanism.
