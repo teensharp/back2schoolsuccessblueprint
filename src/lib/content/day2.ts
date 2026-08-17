@@ -236,7 +236,7 @@ export const day2: Day = {
             },
             {
               kind: "note",
-              text: "Review the Summer Learning Symposium slide before Tuesday's session so you know what your peers presented and how their summer work connects to the academic record you are building.",
+              text: "Complete the Summer Learning Symposium slide before Tuesday's session so you know what your peers presented and how their summer work connects to the academic record you are building.",
             },
             {
               kind: "video",
