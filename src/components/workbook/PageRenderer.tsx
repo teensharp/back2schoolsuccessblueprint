@@ -42,10 +42,6 @@ function renderCarried(value: unknown): string {
   return "";
 }
 
-function preWorkHref(key: string): string {
-  const day = /^d(\d)\./.exec(key)?.[1] ?? "1";
-  return `/day/${day}/pre-work`;
-}
 
 function BlockView({ block, ctx }: { block: Block; ctx: Ctx }) {
   switch (block.kind) {
@@ -98,14 +94,36 @@ function BlockView({ block, ctx }: { block: Block; ctx: Ctx }) {
       const entries = block.from.map((key) => {
         const field = findField(key);
         const label = field && "label" in field ? (field.label ?? "") : "";
-        const text = renderCarried(ctx.responses[key]).trim();
+        const kind = field?.kind;
+        const value = ctx.responses[key];
+        const text = renderCarried(value).trim();
         const words = text.split(/\s+/).filter(Boolean).length;
-        return {
-          key,
-          label: label || key,
-          href: preWorkHref(key),
-          status: words === 0 ? "missing" : words < 15 ? "thin" : "done",
-        };
+
+        let status: "missing" | "thin" | "done";
+        if (words === 0) {
+          status = "missing";
+        } else if (kind === "select" || kind === "checklist" || kind === "agree") {
+          // Choice answers are either made or not — depth does not apply.
+          status = "done";
+        } else if (kind === "table") {
+          const expected = "rows" in field! ? (field as { rows: number }).rows : 0;
+          const filled = Array.isArray(value)
+            ? value.filter(
+                (row) =>
+                  row &&
+                  Object.values(row as Record<string, string>).some(
+                    (v) => typeof v === "string" && v.trim(),
+                  ),
+              ).length
+            : 0;
+          status = expected && filled < Math.ceil(expected / 2) ? "thin" : "done";
+        } else if (kind === "short") {
+          status = words < 8 ? "thin" : "done";
+        } else {
+          status = words < 25 ? "thin" : "done";
+        }
+
+        return { key, label: label || key, status };
       });
       const total = entries.length;
       const done = entries.filter((i) => i.status === "done").length;
@@ -144,11 +162,7 @@ function BlockView({ block, ctx }: { block: Block; ctx: Ctx }) {
                   <p className="text-sm font-semibold text-forest">Not answered yet</p>
                   <ul className="mt-1.5 list-disc space-y-1 pl-5 text-sm text-ink/85">
                     {missing.map((i) => (
-                      <li key={i.key}>
-                        <a href={i.href} className="underline underline-offset-2 hover:text-forest">
-                          {i.label}
-                        </a>
-                      </li>
+                      <li key={i.key}>{i.label}</li>
                     ))}
                   </ul>
                 </div>
@@ -156,13 +170,13 @@ function BlockView({ block, ctx }: { block: Block; ctx: Ctx }) {
               {thin.length > 0 ? (
                 <div className="mt-4 border-t border-forest/15 pt-3">
                   <p className="text-sm font-semibold text-forest">Needs more depth</p>
+                  <p className="mt-1 text-xs leading-relaxed text-ink/70">
+                    These answers are too short to show real thinking. Go back and add evidence,
+                    examples, and specifics.
+                  </p>
                   <ul className="mt-1.5 list-disc space-y-1 pl-5 text-sm text-ink/85">
                     {thin.map((i) => (
-                      <li key={i.key}>
-                        <a href={i.href} className="underline underline-offset-2 hover:text-forest">
-                          {i.label}
-                        </a>
-                      </li>
+                      <li key={i.key}>{i.label}</li>
                     ))}
                   </ul>
                 </div>

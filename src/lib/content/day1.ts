@@ -181,7 +181,7 @@ const part2: Part = {
     f({
       kind: "table",
       key: "d1.pw.reset.table",
-      label: "",
+      label: "What I did not do consistently, and why it matters",
       rows: 3,
       addRows: true,
       columns: [
