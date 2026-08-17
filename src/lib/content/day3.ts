@@ -1,3 +1,5 @@
+import calendarExample from "@/assets/weekly-calendar-example.png";
+
 import { f, type Day } from "./types";
 
 export const day3: Day = {
@@ -164,7 +166,7 @@ export const day3: Day = {
             },
             {
               kind: "image",
-              src: "/assets/weekly-calendar-example.png",
+              src: calendarExample,
               alt: "A student's Google Calendar for one week, fully color-coded with no empty space: classes, study blocks, meals, workouts, and personal time.",
               caption:
                 "This is the standard. Every hour is assigned: classes, named study blocks (\u201cWrite FWS Essay,\u201d \u201cBIO Notes\u201d), meals, workout, and personal time. Notice that the study blocks name the actual task, not just the subject.",
@@ -287,6 +289,11 @@ export const day3: Day = {
       eyebrow: "Live Session Notes",
       title: "Wednesday Guided Notes",
       parts: [
+        {
+          id: "recap",
+          title: "From the TeenSHARP team",
+          blocks: [{ kind: "recap", day: 3 }],
+        },
         {
           id: "check",
           number: "2:00 PM",
@@ -480,26 +487,45 @@ export const day3: Day = {
       parts: [
         {
           id: "reflect",
-          title: "What shifted today",
+          title: "Today's analysis",
           blocks: [
             f({
               kind: "long",
-              key: "d3.r.shift",
-              label: "The biggest thing that shifted for me today:",
-              rows: 3,
+              key: "d3.r.insights",
+              label: "Insights I gained today about leadership, service, and my own track record:",
+              rows: 5,
+            }),
+            f({
+              kind: "long",
+              key: "d3.r.takeaways",
+              label:
+                "My takeaways \u2014 what I now understand about the difference between holding a title and producing change:",
+              rows: 5,
+            }),
+            f({
+              kind: "long",
+              key: "d3.r.discomfort",
+              label:
+                "What today made uncomfortable, and what that discomfort is telling me to change:",
+              rows: 4,
             }),
             f({
               kind: "long",
               key: "d3.r.commit",
-              label: "The one thing I am committing to before tomorrow:",
-              rows: 3,
+              label: "My commitments before tomorrow \u2014 each with a first step and a date:",
+              rows: 4,
             }),
             f({
               kind: "short",
               key: "d3.r.share",
-              label: "Who I will tell about this commitment:",
-              placeholder: "Parent, counselor, teacher, or friend",
+              label: "Who I am telling about these commitments, and when:",
+              placeholder: "Parent, counselor, teacher, or peer \u2014 with the date",
             }),
+            {
+              kind: "offer",
+              id: "junior-advising",
+              placement: "d3.reflect",
+            },
           ],
         },
       ],
