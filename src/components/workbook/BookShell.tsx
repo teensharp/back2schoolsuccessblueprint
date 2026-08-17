@@ -118,7 +118,7 @@ export function BookShell({
           </Sheet>
 
           <Link to="/" className="flex items-center gap-3">
-            <span className="rounded-md bg-paper px-2 py-1">
+            <span className="rounded-md bg-brand-surface px-2 py-1">
               <img src={logo.url} alt="TeenSHARP" className="h-6 w-auto" />
             </span>
             <span className="font-display text-base uppercase tracking-wide">
