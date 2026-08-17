@@ -167,3 +167,6 @@ Optionally, staff can generate it from the cohort's own answers for that day, so
 - Day 3 pre-work Part 3 lives under `d3.pw.cal.*` in `src/lib/content/day3.ts`; the study-hour total is computed client-side from the per-day table and compared against the 30-35 range.
 - The uploaded calendar screenshot is added as a Lovable asset and rendered through a new image/example block kind in `PageRenderer.tsx`, so more reference screenshots can be added later without code changes.
 - Recurring study blocks and the weekly review block are emitted by `src/lib/ics.ts` as weekly-recurring events.
+- New `session_summaries` table (day, title, body, published flag, published_at, author). Grants plus RLS: any authenticated student can read published rows; only staff/admin can insert, update, or unpublish. Students never write to it.
+- Staff drafting runs through a new server function on the Lovable AI gateway using `google/gemini-3.6-flash`, called only after a staff role check; the result is stored as an editable draft, never auto-published.
+- The recap box renders as a new block kind in `PageRenderer.tsx`, fed by a query on `session_summaries` for the current day; the admin editor lives as a tab on `/admin`.
