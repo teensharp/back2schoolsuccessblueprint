@@ -250,7 +250,7 @@ export const day2: Day = {
           number: "Part 2",
           title: "Jumpstart the Partnership With Every Teacher",
           intro:
-            "Your teachers decide your grades, write about you, and control access to opportunities inside your school. Strong students do not wait to be noticed \u2014 they open the relationship in the first weeks. Your assignment: schedule and hold a conversation with every one of your teachers during Back-to-School Week.",
+            "Your teachers are partners in your learning journey. They are not there to merely give out grades (although yes, they do do that); they are there to help you discover answers to the questions you have and unlock new questions. They also can write letters of recommendation that can unlock opportunities for you. Your assignment: schedule and hold a conversation with every one of your teachers during Back-to-School Week.",
           blocks: [
             {
               kind: "principles",
