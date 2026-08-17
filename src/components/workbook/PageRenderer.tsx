@@ -1,4 +1,4 @@
-import { ExternalLink, ListChecks, Quote } from "lucide-react";
+import { ExternalLink, ListChecks } from "lucide-react";
 
 import { VAULT_HOME } from "@/lib/brand";
 import { BEHAVIOR_DEFINITIONS, type BehaviorName } from "@/lib/content/behaviors";
@@ -134,11 +134,7 @@ function BlockView({ block, ctx }: { block: Block; ctx: Ctx }) {
 
       return (
         <div className="rounded-lg border border-dashed border-forest/40 bg-vault/10 p-5">
-          <p className="flex items-center gap-2 font-display text-base uppercase tracking-wide text-forest">
-            <Quote className="h-4 w-4" />
-            Before you build this section
-          </p>
-          <p className="mt-2 text-sm font-semibold text-ink">
+          <p className="text-sm font-semibold text-ink">
             You have completed {done} of {total} pre-work prompts
             {dayNumber ? ` for Day ${dayNumber}` : ""}.
           </p>
