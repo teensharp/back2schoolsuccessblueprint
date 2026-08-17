@@ -274,13 +274,6 @@ export const day3: Day = {
                 "Write honestly about your attitude toward schoolwork. Where do you still treat learning as a chore to survive rather than the work of growing up, and what does that cost you?",
               rows: 4,
             }),
-            {
-              kind: "vault",
-              title: "Go deeper in The Vault",
-              text: "Dami describes the study routine behind the growth — use it as a model for your own blocks.",
-              href: VAULT_VIDEOS.dami.href,
-              cta: `Watch: ${VAULT_VIDEOS.dami.title}`,
-            },
           ],
         },
 
@@ -480,13 +473,6 @@ export const day3: Day = {
               key: "d3.lab.first.who",
               label: "The person I need to talk to first:",
             }),
-            {
-              kind: "vault",
-              title: "Go deeper in The Vault",
-              text: "Dami's path from struggle to mastery is what sustained effort on one thing actually looks like.",
-              href: VAULT_VIDEOS.dami.href,
-              cta: `Watch: ${VAULT_VIDEOS.dami.title}`,
-            },
           ],
         },
       ],
