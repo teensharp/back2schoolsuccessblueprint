@@ -91,31 +91,45 @@ function BlockView({ block, ctx }: { block: Block; ctx: Ctx }) {
       );
 
     case "carry": {
-      const items = block.from
-        .map((key) => ({ key, text: renderCarried(ctx.responses[key]) }))
-        .filter((i) => i.text.trim().length > 0);
+      const entries = block.from.map((key) => {
+        const field = findField(key);
+        const label = field && "label" in field ? (field.label ?? "") : "";
+        return { key, label, text: renderCarried(ctx.responses[key]).trim() };
+      });
+      const answered = entries.filter((i) => i.text.length > 0);
+      const blank = entries.filter((i) => i.text.length === 0);
       return (
         <div className="rounded-lg border border-dashed border-forest/40 bg-vault/10 p-5">
           <p className="flex items-center gap-2 font-display text-base uppercase tracking-wide text-forest">
             <Quote className="h-4 w-4" />
             {block.title}
           </p>
-          {items.length === 0 ? (
+          {answered.length === 0 ? (
             <p className="mt-2 text-sm text-muted-foreground">
               Nothing carried over yet. Finish the earlier pages and your own words will show up
               here.
             </p>
           ) : (
-            <ul className="mt-3 space-y-2">
-              {items.map((i) => (
-                <li key={i.key} className="whitespace-pre-line text-sm leading-relaxed text-ink">
-                  {i.text}
+            <ul className="mt-3 space-y-3">
+              {answered.map((i) => (
+                <li key={i.key} className="text-sm leading-relaxed text-ink">
+                  {i.label ? (
+                    <span className="block font-semibold text-forest">{i.label}</span>
+                  ) : null}
+                  <span className="whitespace-pre-line">{i.text}</span>
                 </li>
               ))}
             </ul>
           )}
+          {blank.length > 0 ? (
+            <p className="mt-4 border-t border-forest/15 pt-3 text-sm text-muted-foreground">
+              Still blank in your earlier pages:{" "}
+              {blank.map((i) => i.label || i.key).join(" \u00b7 ")}
+            </p>
+          ) : null}
         </div>
       );
+
     }
 
     case "recap":

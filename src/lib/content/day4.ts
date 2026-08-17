@@ -218,7 +218,15 @@ export const day4: Day = {
             {
               kind: "carry",
               title: "From your pre-work and session notes",
-              from: ["d4.pw.count", "d4.s.workshop.mistake"],
+              from: [
+                "d4.pw.count",
+                "d4.pw.past",
+                "d4.pw.blockers",
+                "d4.pw.scan",
+                "d4.pw.story",
+                "d4.pw.recommenders",
+                "d4.s.workshop.mistake",
+              ],
             },
           ],
         },
