@@ -1,4 +1,3 @@
-import logo from "@/assets/teensharp-logo.png.asset.json";
 import { Link, createFileRoute } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
 import { useEffect, useState } from "react";
@@ -21,7 +20,7 @@ export const Route = createFileRoute("/")({
   ssr: false,
   head: () => ({
     meta: [
-      { title: "My Back-to-School Blueprint | TeenSHARP Back-to-School Success Week 2026" },
+      { title: "My Blueprint | Back-to-School Success Week 2026" },
       {
         name: "description",
         content:
@@ -75,9 +74,6 @@ function Cover() {
     <div className="space-y-10">
       <div className="overflow-hidden rounded-xl border border-forest/20 bg-forest text-forest-foreground shadow-lg">
         <div className="flex flex-wrap items-center gap-4 border-b border-white/10 px-8 py-5">
-          <span className="rounded-md bg-brand-surface px-3 py-1.5">
-            <img src={logo.url} alt="TeenSHARP" className="h-8 w-auto" />
-          </span>
           <p className="font-display text-sm uppercase tracking-[0.3em] text-vault">
             The Vault &middot; Back-to-School Success Week
           </p>
