@@ -1,6 +1,5 @@
 import { Mail, MessageCircle } from "lucide-react";
 
-import logo from "@/assets/teensharp-logo.png.asset.json";
 import { ADVISING_EMAIL, WOODSON_URL } from "@/lib/brand";
 
 /** Support line that appears at the bottom of every page of the book. */
@@ -38,12 +37,6 @@ export function HelpFooter() {
             Woodson: {WOODSON_URL} &middot; {ADVISING_EMAIL}
           </p>
         </div>
-        <img
-          src={logo.url}
-          alt="TeenSHARP"
-          className="h-10 w-auto opacity-80"
-          loading="lazy"
-        />
       </div>
     </footer>
   );

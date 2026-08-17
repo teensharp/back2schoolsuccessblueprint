@@ -152,7 +152,7 @@ function Blueprint({ responses }: { responses: ResponseMap }) {
 
   const share = async () => {
     const lines = [
-      "My Back-to-School Blueprint (TeenSHARP Bridge Week 2026)",
+      "My Back-to-School Blueprint (TeenSHARP, 2026)",
       "",
       ...DAYS.flatMap((d) => {
         const items = pageFields(d.pages.lab)

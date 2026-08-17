@@ -16,10 +16,10 @@ export type AgendaDay = {
 };
 
 export const HELPFUL_LINKS = [
-  { label: "Bridge Week Zoom Link", href: "#" },
+  { label: "Back-to-School Success Week Zoom Link", href: "#" },
   { label: "Summer Learning Symposium Slide", href: "#" },
   { label: "Padlet", href: "#" },
-  { label: "Bridge Week Course", href: "#" },
+  { label: "Back-to-School Success Week Course", href: "#" },
   { label: "Spotify Playlist", href: "#" },
 ];
 

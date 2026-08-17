@@ -18,7 +18,7 @@ export const SECTION_LABELS: Record<SectionId, string> = {
 export const BOOK_TITLE = "My Back-to-School Blueprint";
 export const BOOK_SUBTITLE =
   "A Personalized Roadmap to Excel Academically, Grow Intellectually, Lead Purposefully, and Pursue Elite Opportunities";
-export const PROGRAM_NAME = "TeenSHARP Bridge Week 2026";
+export const PROGRAM_NAME = "TeenSHARP Back-to-School Success Week 2026";
 export const PROGRAM_DATES = "August 17\u201320, 2026";
 
 export function getDay(day: number): Day | undefined {

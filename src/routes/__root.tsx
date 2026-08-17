@@ -77,7 +77,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "My Back-to-School Blueprint | TeenSHARP Bridge Week 2026" },
+      { title: "My Blueprint | Back-to-School Success Week 2026" },
       { name: "description", content: "A fillable four-day workbook for TeenSHARP Back-to-School Success Week 2026." },
       { name: "author", content: "TeenSHARP" },
       { property: "og:title", content: "My Back-to-School Blueprint" },

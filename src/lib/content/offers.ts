@@ -29,7 +29,7 @@ export const OFFERS: Offer[] = [
     id: "vault",
     eyebrow: "Your next step",
     title: "The Vault",
-    body: "Bridge Week ends Thursday. The Vault is where this blueprint keeps moving: on-demand workshops, deadline drops, and a community that asks how the plan is going.",
+    body: "Back-to-School Success Week ends Thursday. The Vault is where this blueprint keeps moving: on-demand workshops, deadline drops, and a community that asks how the plan is going.",
     bullets: [
       "Full library of academic and college-readiness workshops",
       "Monthly live Q&A with the TeenSHARP team",
