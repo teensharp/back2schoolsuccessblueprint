@@ -47,7 +47,12 @@ function DaySectionPage() {
     <BookPage>
       {(ctx) => (
         <div className="space-y-10">
-          <PageRenderer page={page} ctx={{ responses: ctx.responses, onChange: ctx.setValue }} />
+          <PageRenderer page={page} ctx={{
+              responses: ctx.responses,
+              onChange: ctx.setValue,
+              userId: ctx.userId,
+              grade: ctx.grade,
+            }} />
 
           {section === "reflect" ? (
             <DayReflection day={Number(day)} userId={ctx.userId} responses={ctx.responses} />

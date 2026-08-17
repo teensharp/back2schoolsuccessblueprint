@@ -1,4 +1,16 @@
-import { f, type Day } from "./types";
+import { PROGRAM_CATALOG } from "./programs";
+import { f, type Block, type Day } from "./types";
+
+/** The catalog, rendered as reference blocks inside the Day 4 lab. */
+const catalogBlocks: Block[] = PROGRAM_CATALOG.flatMap((group) => [
+  { kind: "subhead", text: group.area } as Block,
+  {
+    kind: "prose",
+    text: group.programs
+      .map((p) => `${p.name} (grades ${p.grades}) \u2014 ${p.note}`)
+      .join("\n"),
+  } as Block,
+]);
 
 export const day4: Day = {
   day: 4,
@@ -114,6 +126,41 @@ export const day4: Day = {
       title: "Thursday Guided Notes",
       parts: [
         {
+          id: "recap",
+          title: "From the TeenSHARP team",
+          blocks: [{ kind: "recap", day: 4 }],
+        },
+        {
+          id: "gallery",
+          number: "Gallery Walk",
+          title: "Opportunity Gallery Walk",
+          intro:
+            "As programs, scholarships, and internships are presented, capture them here in real time. Do not filter yet \u2014 capture everything that could plausibly fit you, then narrow in the Lab.",
+          blocks: [
+            f({
+              kind: "table",
+              key: "d4.s.gallery",
+              label: "Everything I saw in the gallery walk",
+              rows: 10,
+              addRows: true,
+              columns: [
+                { key: "name", label: "Opportunity", type: "text" },
+                { key: "area", label: "Interest area", type: "text" },
+                { key: "grades", label: "Grades served", type: "text" },
+                { key: "deadline", label: "Deadline (approx.)", type: "text" },
+                { key: "fit", label: "Why it could fit me", type: "long" },
+              ],
+            }),
+            f({
+              kind: "long",
+              key: "d4.s.gallery.pattern",
+              label:
+                "Looking at what I captured: what pattern do these opportunities share, and what does that say about the direction I am actually heading?",
+              rows: 4,
+            }),
+          ],
+        },
+        {
           id: "symposium",
           number: "2:00 PM",
           title: "Summer Learning Symposium",
@@ -174,6 +221,19 @@ export const day4: Day = {
           ],
         },
         {
+          id: "catalog",
+          title: "The Opportunity Catalog",
+          intro:
+            "Programs organized by interest area, with the grades they serve and roughly when applications close. Deadlines shift year to year \u2014 confirm every one on the program's own site as part of your research.",
+          blocks: [
+            ...catalogBlocks,
+            {
+              kind: "note",
+              text: "Nothing here is a ceiling. If a program you want is missing, add it \u2014 the requirement is five or more real commitments, not five from this page.",
+            },
+          ],
+        },
+        {
           id: "committed",
           title: "My Committed Opportunities",
           blocks: [
@@ -198,21 +258,87 @@ export const day4: Day = {
           ],
         },
         {
-          id: "calendar",
-          title: "My Action Calendar",
+          id: "requirements",
+          title: "Requirements Research",
+          intro:
+            "For every opportunity you committed to, open its site and record what it actually asks for. An application you have not read is an application you will miss.",
           blocks: [
             f({
               kind: "table",
-              key: "d4.lab.calendar",
-              label: "Working backward from each deadline",
-              rows: 6,
+              key: "d4.lab.requirements",
+              label: "What each application requires",
+              rows: 5,
               addRows: true,
               columns: [
-                { key: "task", label: "Task", type: "long" },
-                { key: "opportunity", label: "For which opportunity", type: "text" },
-                { key: "date", label: "Do it by (YYYY-MM-DD)", type: "text" },
+                { key: "name", label: "Opportunity", type: "text" },
+                { key: "deadline", label: "Deadline", type: "date" },
+                { key: "essays", label: "Essays or written work required", type: "long" },
+                { key: "recs", label: "Recommendations (how many, from whom)", type: "long" },
+                { key: "other", label: "Transcript, scores, portfolio, interview, fee waiver", type: "long" },
               ],
             }),
+            f({
+              kind: "long",
+              key: "d4.lab.requirements.hardest",
+              label:
+                "Which requirement will take me the longest to produce well, and when does work on it have to start for it to be strong rather than rushed?",
+              rows: 3,
+            }),
+          ],
+        },
+        {
+          id: "calendar",
+          title: "Backward Calendaring",
+          intro:
+            "Start at each deadline and walk backward. Every milestone gets a date, and every date goes on your Google Calendar. This is the section that turns a list of programs into work that actually happens.",
+          blocks: [
+            {
+              kind: "principles",
+              title: "How to build it backward",
+              items: [
+                {
+                  title: "Anchor on the deadline",
+                  text: "Write the real deadline first, confirmed on the program's own site. Then treat submission day as one week earlier \u2014 servers crash and recommenders run late.",
+                },
+                {
+                  title: "Place the recommendation ask first",
+                  text: "Recommenders need at least four weeks. That means the ask is one of the earliest milestones, not one of the last.",
+                  example: "Deadline Feb 1 \u2192 ask recommenders by Dec 20, with your resume and a paragraph on why this program.",
+                },
+                {
+                  title: "Draft, rest, revise",
+                  text: "First draft, then a week away from it, then revision with feedback, then a final polish. Four milestones per essay, not one.",
+                  example: "Deadline Feb 1 \u2192 Draft 1 started Dec 27 \u00b7 Draft 1 done Jan 3 \u00b7 Feedback in hand Jan 10 \u00b7 Final Jan 24.",
+                },
+                {
+                  title: "Collect the paperwork early",
+                  text: "Transcripts, score reports, and fee waivers depend on other people's offices being open. Schedule those requests before winter break, not during it.",
+                },
+              ],
+            },
+            f({
+              kind: "table",
+              key: "d4.lab.calendar",
+              label: "My milestones, working backward from every deadline",
+              rows: 8,
+              addRows: true,
+              examplesTitle: "Show a worked example",
+              examples: [
+                { label: "Milestone", text: "Draft 1 started \u00b7 MITES \u00b7 2026-12-27" },
+                { label: "Milestone", text: "Recommenders asked (Mr. Diaz, Ms. Okafor) \u00b7 MITES \u00b7 2026-12-20" },
+                { label: "Milestone", text: "Transcript requested from counselor \u00b7 MITES \u00b7 2027-01-05" },
+              ],
+              columns: [
+                { key: "task", label: "Milestone", type: "long" },
+                { key: "opportunity", label: "For which opportunity", type: "text" },
+                { key: "date", label: "Do it by", type: "date" },
+                { key: "done", label: "Done", type: "check" },
+              ],
+            }),
+            {
+              kind: "note",
+              text: "Every milestone with a date exports to Google Calendar from the Blueprint page, alongside your deadlines. Put them on the calendar the same day you write them here.",
+            },
           ],
         },
         {
@@ -259,28 +385,53 @@ export const day4: Day = {
           blocks: [
             f({
               kind: "long",
-              key: "d4.r.shift",
-              label: "The biggest thing that shifted for me this week:",
-              rows: 3,
+              key: "d4.r.insights",
+              label: "Insights I gained across the four days, and the evidence behind each one:",
+              rows: 5,
+            }),
+            f({
+              kind: "long",
+              key: "d4.r.takeaways",
+              label:
+                "My takeaways \u2014 what I now know about the gap between the student I have been and the student this blueprint describes:",
+              rows: 5,
+            }),
+            f({
+              kind: "long",
+              key: "d4.r.discomfort",
+              label:
+                "What this week made uncomfortable, and what that discomfort is telling me to change:",
+              rows: 4,
             }),
             f({
               kind: "long",
               key: "d4.r.commit",
-              label: "The one commitment I will not let slide:",
-              rows: 3,
+              label:
+                "The commitments I will not let slide \u2014 each with a first step, a date, and how I will know I kept it:",
+              rows: 5,
             }),
             f({
               kind: "short",
               key: "d4.r.share",
-              label: "Who I will tell about this commitment:",
-              placeholder: "Parent, counselor, teacher, or friend",
+              label: "Who I am telling about these commitments, and when:",
+              placeholder: "Parent, counselor, teacher, or peer \u2014 with the date",
             }),
             f({
               kind: "long",
               key: "d4.r.year",
-              label: "If this blueprint works, here is who I will be by June:",
+              label: "If this blueprint works, here is who I will be by June, described specifically:",
               rows: 4,
             }),
+            {
+              kind: "offer",
+              id: "senior-advising",
+              placement: "d4.reflect",
+            },
+            {
+              kind: "offer",
+              id: "vault",
+              placement: "d4.reflect",
+            },
           ],
         },
       ],

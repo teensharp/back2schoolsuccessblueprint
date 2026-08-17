@@ -1,9 +1,12 @@
-import { ExternalLink, Quote } from "lucide-react";
+import { ExternalLink, ListChecks, Quote } from "lucide-react";
 
 import { BEHAVIOR_DEFINITIONS, type BehaviorName } from "@/lib/content/behaviors";
+import { findField } from "@/lib/content/book";
 import type { Block, Page, Part } from "@/lib/content/types";
 import { isAnswered, type ResponseMap } from "@/lib/responses";
 
+import { OfferCard } from "./OfferCard";
+import { RecapBox } from "./RecapBox";
 import { WorkbookField } from "./WorkbookField";
 
 const VAULT_URL = "https://teensharp.org/the-vault";
@@ -11,7 +14,10 @@ const VAULT_URL = "https://teensharp.org/the-vault";
 type Ctx = {
   responses: ResponseMap;
   onChange: (key: string, value: unknown) => void;
+  userId?: string | undefined;
+  grade?: string | null | undefined;
 };
+
 
 function renderCarried(value: unknown): string {
   if (typeof value === "string") return value;
@@ -111,9 +117,105 @@ function BlockView({ block, ctx }: { block: Block; ctx: Ctx }) {
       );
     }
 
+    case "recap":
+      return <RecapBox day={block.day} section={block.section ?? "session"} />;
+
+    case "offer":
+      return (
+        <OfferCard
+          id={block.id}
+          placement={block.placement}
+          userId={ctx.userId}
+          grade={ctx.grade}
+        />
+      );
+
+    case "image":
+      return (
+        <figure className="overflow-hidden rounded-lg border border-rule bg-paper">
+          <img src={block.src} alt={block.alt} loading="lazy" className="w-full" />
+          {block.caption ? (
+            <figcaption className="border-t border-rule px-4 py-3 text-sm leading-relaxed text-ink/80">
+              {block.caption}
+            </figcaption>
+          ) : null}
+        </figure>
+      );
+
+    case "principles":
+      return (
+        <div className="space-y-4">
+          {block.title ? (
+            <h4 className="font-display text-lg uppercase tracking-wide text-forest">
+              {block.title}
+            </h4>
+          ) : null}
+          <ol className="space-y-4">
+            {block.items.map((item, i) => (
+              <li key={item.title} className="rounded-lg border border-rule bg-card p-4">
+                <p className="flex items-baseline gap-3">
+                  <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-forest font-display text-xs text-forest-foreground">
+                    {i + 1}
+                  </span>
+                  <span className="font-display text-lg uppercase tracking-wide text-forest">
+                    {item.title}
+                  </span>
+                </p>
+                <p className="mt-2 text-[15px] leading-relaxed text-ink/85">{item.text}</p>
+                {item.example ? (
+                  <p className="mt-2 rounded-md border-l-4 border-vault bg-vault/10 px-3 py-2 text-sm leading-relaxed text-ink">
+                    <span className="font-semibold">In practice: </span>
+                    {item.example}
+                  </p>
+                ) : null}
+              </li>
+            ))}
+          </ol>
+        </div>
+      );
+
+    case "fixlist": {
+      const items: string[] = [];
+      for (const key of block.from) {
+        const field = findField(key);
+        if (!field || field.kind !== "agree") continue;
+        const answers = (ctx.responses[key] ?? {}) as Record<string, string>;
+        const no = field.choices?.[1] ?? "Disagree";
+        field.statements.forEach((statement, i) => {
+          if (answers[String(i)] === no) items.push(statement);
+        });
+      }
+      return (
+        <div className="rounded-lg border border-forest/30 bg-paper p-5">
+          <p className="flex items-center gap-2 font-display text-base uppercase tracking-wide text-forest">
+            <ListChecks className="h-4 w-4" />
+            {block.title}
+          </p>
+          {block.intro ? (
+            <p className="mt-1.5 text-sm leading-relaxed text-ink/80">{block.intro}</p>
+          ) : null}
+          {items.length === 0 ? (
+            <p className="mt-2 text-sm text-muted-foreground">
+              Nothing here yet. Complete the self-evaluation and every item you marked No shows up
+              as work to do.
+            </p>
+          ) : (
+            <ul className="mt-3 list-disc space-y-1.5 pl-5">
+              {items.map((t, i) => (
+                <li key={i} className="text-sm leading-relaxed text-ink">
+                  {t}
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
+      );
+    }
+
     case "group": {
       const definition =
         block.definition ?? BEHAVIOR_DEFINITIONS[block.title as BehaviorName] ?? undefined;
+
       return (
         <section className="rounded-lg border border-rule bg-card p-5 shadow-sm">
           <div className="mb-3 flex items-baseline gap-3">

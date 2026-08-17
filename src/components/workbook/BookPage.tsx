@@ -17,6 +17,7 @@ export type BookContext = {
   userId: string;
   responses: ResponseMap;
   setValue: (key: string, value: unknown) => void;
+  grade: string | null;
 };
 
 /**
@@ -50,7 +51,7 @@ export function BookPage({ children }: { children: (ctx: BookContext) => ReactNo
       saveLabel={SAVE_LABELS[state]}
       studentName={profile?.full_name ?? undefined}
     >
-      {children({ userId: user.id, responses: map, setValue })}
+      {children({ userId: user.id, responses: map, setValue, grade: profile?.grade ?? null })}
     </BookShell>
   );
 }

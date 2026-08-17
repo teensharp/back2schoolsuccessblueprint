@@ -165,6 +165,13 @@ export function WorkbookField({ field, responses, onChange }: Props) {
 
   if (field.kind === "agree") {
     const current = (value ?? {}) as Record<string, string>;
+    const choices = field.choices ?? (["Agree", "Disagree"] as [string, string]);
+    const yesCount = field.statements.filter((_, i) => current[String(i)] === choices[0]).length;
+    const answered = field.statements.filter((_, i) => current[String(i)]).length;
+    const band = field.bands
+      ? [...field.bands].sort((a, b) => b.min - a.min).find((b) => yesCount >= b.min)
+      : undefined;
+
     return (
       <div>
         {field.label ? <FieldLabel>{field.label}</FieldLabel> : null}
@@ -179,7 +186,7 @@ export function WorkbookField({ field, responses, onChange }: Props) {
               >
                 <span className="text-sm leading-snug">{s}</span>
                 <div className="flex shrink-0 gap-1.5">
-                  {(["Agree", "Disagree"] as const).map((choice) => (
+                  {choices.map((choice) => (
                     <button
                       key={choice}
                       type="button"
@@ -203,12 +210,29 @@ export function WorkbookField({ field, responses, onChange }: Props) {
             );
           })}
         </div>
+        {field.score ? (
+          <div className="mt-2 rounded-md border border-forest/25 bg-vault/15 px-4 py-3">
+            <p className="text-sm font-semibold text-forest">
+              {choices[0]}: {yesCount} of {field.statements.length}
+              <span className="ml-2 font-normal text-muted-foreground">
+                ({answered} of {field.statements.length} answered)
+              </span>
+            </p>
+            {band ? (
+              <p className="mt-1 text-sm leading-relaxed text-ink">
+                <span className="font-semibold">{band.label}. </span>
+                {band.text}
+              </p>
+            ) : null}
+          </div>
+        ) : null}
       </div>
     );
   }
 
   return <WorkbookTable field={field} value={value} onChange={onChange} carried={useCarried} />;
 }
+
 
 function WorkbookTable({
   field,
@@ -305,6 +329,8 @@ function WorkbookTable({
         </table>
       </div>
 
+      {field.totalColumn ? <TableTotal field={field} rows={rows} /> : null}
+
       {field.addRows ? (
         <Button type="button" variant="ghost" size="sm" className="mt-2 text-forest" onClick={addRow}>
           <Plus className="mr-1 h-4 w-4" /> Add row
@@ -313,6 +339,46 @@ function WorkbookTable({
     </div>
   );
 }
+
+function TableTotal({
+  field,
+  rows,
+}: {
+  field: Extract<Field, { kind: "table" }>;
+  rows: TableRow[];
+}) {
+  const col = field.totalColumn!;
+  const total = rows.reduce((sum, r) => {
+    const n = Number.parseFloat((r[col] ?? "").replace(/[^0-9.]/g, ""));
+    return sum + (Number.isFinite(n) ? n : 0);
+  }, 0);
+  const min = field.targetMin;
+  const max = field.targetMax;
+  const short = min !== undefined && total < min;
+  const over = max !== undefined && total > max;
+
+  return (
+    <div
+      className={`mt-2 flex flex-wrap items-baseline justify-between gap-2 rounded-md border px-4 py-3 ${
+        short ? "border-destructive/40 bg-destructive/5" : "border-forest/25 bg-vault/15"
+      }`}
+    >
+      <p className="text-sm font-semibold text-forest">
+        {field.totalLabel ?? "Total"}: {Math.round(total * 10) / 10}
+      </p>
+      {min !== undefined ? (
+        <p className="text-sm text-ink/80">
+          {short
+            ? `You are ${Math.round((min - total) * 10) / 10} short of the ${min}\u2013${max ?? min} hour standard. Find the hours \u2014 weekends included.`
+            : over
+              ? `Above the ${min}\u2013${max} hour range. Check that rest and family time are still protected.`
+              : `On target for the ${min}\u2013${max ?? min} hour standard.`}
+        </p>
+      ) : null}
+    </div>
+  );
+}
+
 
 function TableCell({
   column,
@@ -363,6 +429,40 @@ function TableCell({
     );
   }
 
+  if (column.type === "number") {
+    return (
+      <Input
+        inputMode="decimal"
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+        className="h-8 w-20 border-0 bg-transparent px-2 text-sm shadow-none focus-visible:ring-1"
+      />
+    );
+  }
+
+  if (column.type === "date") {
+    return (
+      <Input
+        type="date"
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+        className="h-8 border-0 bg-transparent px-2 text-sm shadow-none focus-visible:ring-1"
+      />
+    );
+  }
+
+  if (column.type === "check") {
+    return (
+      <div className="flex justify-center">
+        <Checkbox
+          checked={value === "yes"}
+          onCheckedChange={(c) => onChange(c ? "yes" : "")}
+          aria-label={column.label}
+        />
+      </div>
+    );
+  }
+
   return (
     <Input
       value={value}
@@ -371,3 +471,4 @@ function TableCell({
     />
   );
 }
+

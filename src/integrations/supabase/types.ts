@@ -77,6 +77,33 @@ export type Database = {
         }
         Relationships: []
       }
+      offer_events: {
+        Row: {
+          created_at: string
+          event_type: string
+          id: string
+          offer_id: string
+          placement: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          event_type?: string
+          id?: string
+          offer_id: string
+          placement?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          event_type?: string
+          id?: string
+          offer_id?: string
+          placement?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       profiles: {
         Row: {
           created_at: string
@@ -131,6 +158,42 @@ export type Database = {
           updated_at?: string
           user_id?: string
           value?: Json
+        }
+        Relationships: []
+      }
+      session_summaries: {
+        Row: {
+          author_id: string | null
+          body: string
+          created_at: string
+          day: number
+          id: string
+          published: boolean
+          section: string
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          author_id?: string | null
+          body?: string
+          created_at?: string
+          day: number
+          id?: string
+          published?: boolean
+          section?: string
+          title?: string
+          updated_at?: string
+        }
+        Update: {
+          author_id?: string | null
+          body?: string
+          created_at?: string
+          day?: number
+          id?: string
+          published?: boolean
+          section?: string
+          title?: string
+          updated_at?: string
         }
         Relationships: []
       }
