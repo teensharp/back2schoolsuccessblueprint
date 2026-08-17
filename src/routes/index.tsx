@@ -21,7 +21,7 @@ export const Route = createFileRoute("/")({
   ssr: false,
   head: () => ({
     meta: [
-      { title: "My Back-to-School Blueprint | TeenSHARP Bridge Week 2026" },
+      { title: "My Back-to-School Blueprint | TeenSHARP Back-to-School Success Week 2026" },
       {
         name: "description",
         content:
@@ -79,7 +79,7 @@ function Cover() {
             <img src={logo.url} alt="TeenSHARP" className="h-8 w-auto" />
           </span>
           <p className="font-display text-sm uppercase tracking-[0.3em] text-vault">
-            The Vault &middot; Bridge Week
+            The Vault &middot; Back-to-School Success Week
           </p>
         </div>
         <div className="px-8 py-12">

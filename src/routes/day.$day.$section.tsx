@@ -17,7 +17,7 @@ export const Route = createFileRoute("/day/$day/$section")({
     const description = page
       ? page.subtitle ??
         page.coreQuestion ??
-        `Day ${page.day} ${page.eyebrow} for TeenSHARP Bridge Week 2026.`
+        `Day ${page.day} ${page.eyebrow} for TeenSHARP Back-to-School Success Week 2026.`
       : "Your fillable Back-to-School Success Week workbook.";
     return {
       meta: [

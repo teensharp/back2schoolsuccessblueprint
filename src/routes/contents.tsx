@@ -14,7 +14,7 @@ export const Route = createFileRoute("/contents")({
       {
         name: "description",
         content:
-          "Every page of your Bridge Week 2026 blueprint, with how much of each section you have finished.",
+          "Every page of your Back-to-School Success Week 2026 blueprint, with how much of each section you have finished.",
       },
       { property: "og:title", content: "Table of Contents | Back-to-School Blueprint" },
       {

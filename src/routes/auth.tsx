@@ -24,7 +24,7 @@ export const Route = createFileRoute("/auth")({
       { property: "og:title", content: "Sign in \u2014 Back-to-School Blueprint" },
       {
         property: "og:description",
-        content: "Save your Bridge Week 2026 workbook answers and build your blueprint.",
+        content: "Save your Back-to-School Success Week 2026 workbook answers and build your blueprint.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
