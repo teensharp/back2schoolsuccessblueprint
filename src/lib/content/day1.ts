@@ -501,8 +501,23 @@ export const day1: Day = {
           id: "panel",
           number: "2:40 PM",
           title: "What Top Students Do Differently",
-          intro: "Panel with Arely Reyes (Amherst '29) and Aanyae Anderson (Wake Forest '29).",
+          intro:
+            "Panel with Arely Reyes (Amherst '29), Aanyae Anderson (Wake Forest '29), and Justin Dorce (Washington University in St. Louis '29).",
           blocks: [
+            f({
+              kind: "table",
+              key: "d1.s.panel.bypanelist",
+              label:
+                "Notes by panelist \u2014 capture what each one actually said, not a summary:",
+              rows: 3,
+              addRows: true,
+              columns: [
+                { key: "panelist", label: "Panelist", type: "text" },
+                { key: "practice", label: "Specific practice or system they described", type: "long" },
+                { key: "evidence", label: "Proof it worked (result, story, number)", type: "long" },
+                { key: "steal", label: "What I am stealing and when I start", type: "long" },
+              ],
+            }),
             f({
               kind: "table",
               key: "d1.s.panel.habits",
