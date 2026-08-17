@@ -241,7 +241,7 @@ export const day2: Day = {
             {
               kind: "video",
               label: "Summer Learning Symposium Slide",
-              href: "https://teensharp.org",
+              href: "https://forms.gle/SAjppcB2hn8x36mR8",
             },
           ],
         },
