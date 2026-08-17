@@ -20,7 +20,7 @@ export function RecapBox({ day, section = "session" }: { day: number; section?: 
           Session recap from the TeenSHARP team
         </p>
         <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-          Your recap lands here shortly after the session ends. Take your own notes first \u2014 the
+          Your recap lands here shortly after the session ends. Take your own notes first &mdash; the
           recap is there to fill gaps, not replace your thinking.
         </p>
       </div>
