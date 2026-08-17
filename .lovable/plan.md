@@ -110,4 +110,7 @@ The table gives those milestones as prompted rows with suggested lead times pre-
 - Reflection prompts that change from a single field to a table get new keys; old keys are left in place so nothing already saved is lost.
 - The teacher conversation lives in Day 2 pre-work under keys `d2.pw.teacherchat.*`; the question list is static prose plus a checklist so students can tick questions as they ask them.
 - Meeting rows with a confirmed date and time are picked up by the existing `.ics` export alongside opportunity deadlines.
+- Day 4 gallery walk and backward-calendar content lives under `d4.pw.gallery.*` and `d4.lab.backward.*`; milestone lead times are computed client-side from the entered deadline and remain editable.
+- `src/lib/ics.ts` is extended to emit milestone events as well as deadlines; Google Calendar template links are generated per row.
+
 
