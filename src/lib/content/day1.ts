@@ -661,28 +661,48 @@ export const day1: Day = {
       parts: [
         {
           id: "reflect",
-          title: "What shifted today",
+          title: "Today's analysis",
           blocks: [
             f({
               kind: "long",
-              key: "d1.r.shift",
-              label: "The biggest thing that shifted for me today:",
-              rows: 3,
+              key: "d1.r.insights",
+              label: "Insights I gained today, and the evidence behind each one:",
+              rows: 5,
+            }),
+            f({
+              kind: "long",
+              key: "d1.r.takeaways",
+              label:
+                "My takeaways \u2014 what I now know about how last year actually went and what it will take to run this year differently:",
+              rows: 5,
+            }),
+            f({
+              kind: "long",
+              key: "d1.r.discomfort",
+              label:
+                "What today made uncomfortable, and what that discomfort is telling me to change:",
+              rows: 4,
             }),
             f({
               kind: "long",
               key: "d1.r.commit",
-              label: "The one thing I am committing to before tomorrow:",
-              rows: 3,
+              label: "My commitments before tomorrow \u2014 each with a first step and a time:",
+              rows: 4,
             }),
             f({
               kind: "short",
               key: "d1.r.share",
-              label: "Who I will tell about this commitment:",
-              placeholder: "Parent, counselor, teacher, or friend",
+              label: "Who I am telling about these commitments, and when:",
+              placeholder: "Parent, counselor, teacher, or peer \u2014 with the date",
             }),
+            {
+              kind: "offer",
+              id: "vault",
+              placement: "d1.reflect",
+            },
           ],
         },
+
       ],
     },
   },
