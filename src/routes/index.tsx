@@ -1,3 +1,4 @@
+import logo from "@/assets/teensharp-logo.png.asset.json";
 import { Link, createFileRoute } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
 import { useEffect, useState } from "react";
