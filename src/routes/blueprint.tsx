@@ -6,7 +6,7 @@ import { BookPage } from "@/components/workbook/BookPage";
 import { Button } from "@/components/ui/button";
 import { DAYS } from "@/lib/content/book";
 import { pageFields } from "@/lib/content/types";
-import { downloadIcs, isValidDate, type CalendarEvent } from "@/lib/ics";
+import { downloadIcs, isValidDate, nextWeekday, type CalendarEvent } from "@/lib/ics";
 import { isAnswered, type ResponseMap } from "@/lib/responses";
 
 export const Route = createFileRoute("/blueprint")({
@@ -78,6 +78,61 @@ function collectEvents(responses: ResponseMap): CalendarEvent[] {
           description: row["opportunity"] ?? "",
         });
       }
+    }
+  }
+
+  const requirements = responses["d4.lab.requirements"];
+  if (Array.isArray(requirements)) {
+    for (const row of requirements as Record<string, string>[]) {
+      if (isValidDate(row["deadline"]) && row["name"]) {
+        events.push({
+          title: `Application due: ${row["name"]}`,
+          date: row["deadline"]!.trim(),
+          description: [row["essays"], row["recs"], row["other"]].filter(Boolean).join(" | "),
+        });
+      }
+    }
+  }
+
+  const meetings = responses["d2.pw.meetings"];
+  if (Array.isArray(meetings)) {
+    for (const row of meetings as Record<string, string>[]) {
+      if (isValidDate(row["date"]) && row["teacher"]) {
+        events.push({
+          title: `Teacher conversation: ${row["teacher"]}`,
+          date: row["date"]!.trim(),
+          description: row["time"] ?? "",
+        });
+      }
+    }
+  }
+
+  const studyHours = responses["d3.pw.studyhours"];
+  if (Array.isArray(studyHours)) {
+    for (const row of studyHours as Record<string, string>[]) {
+      const start = row["day"] ? nextWeekday(row["day"]) : null;
+      const hours = (row["hours"] ?? "").trim();
+      if (start && hours) {
+        events.push({
+          title: `Study block \u2014 ${hours}h`,
+          date: start,
+          description: row["blocks"] ?? "",
+          weeklyCount: 40,
+        });
+      }
+    }
+  }
+
+  const reviewDay = responses["d3.pw.review.day"];
+  if (typeof reviewDay === "string" && reviewDay.trim()) {
+    const start = nextWeekday(reviewDay);
+    if (start) {
+      events.push({
+        title: "Weekly calendar review",
+        date: start,
+        description: `Evaluate last week's blocks and adjust (${reviewDay.trim()}).`,
+        weeklyCount: 40,
+      });
     }
   }
 
