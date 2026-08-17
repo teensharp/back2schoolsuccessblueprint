@@ -53,6 +53,11 @@ function AuthPage() {
     setError(null);
     try {
       if (mode === "signup") {
+        if (password.length < 8 || !/[A-Za-z]/.test(password) || !/[0-9]/.test(password)) {
+          throw new Error(
+            "Your password needs at least 8 characters, including one letter and one number.",
+          );
+        }
         const { error: err } = await supabase.auth.signUp({
           email,
           password,
