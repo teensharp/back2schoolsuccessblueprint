@@ -70,7 +70,39 @@ A meeting table, one row per teacher, with add-row: teacher, subject, date and t
 
 **Carries forward:** confirmed check-in times feed the Blueprint Lab teacher connection plan and the calendar export; outstanding textbooks appear on the final Blueprint as open action items.
 
+## Part D — Day 4: Gallery Walk capture and backward calendaring
+
+No fixed program catalog is shipped. Students collect opportunities live during the Summer Learning Symposium gallery walk, and the book gives them the structure to turn that raw list into dated plans. A curated list by grade level and interest can be dropped in later without changing any of this structure.
+
+**Gallery Walk capture (Day 4 pre-work)** — an add-row table filled during the walk: program or opportunity, who presented it / where I found it, grade levels eligible, area of interest, why it caught my attention. No cap; capture everything.
+
+**Shortlist and commit** — from that capture, the student commits to at least five. A commitment table: program, area of interest, application deadline, fit reason in one honest sentence, reach / match / strong fit. The page will not read as complete until five rows carry a deadline, and a live counter shows how many of the five are done.
+
+**Requirements research, one block per committed program** — a repeating block: deadline, eligibility (grade, GPA, location, cost), what the application requires (essays, recommendations, transcript, portfolio, interview), cost and financial aid available, and what still needs to be confirmed with the program.
+
+**Backward calendar** — the core assignment. For each committed program the student works backward from the deadline:
+
+```text
+Deadline  ->  Submit 3 days early
+          ->  Final review with an adult
+          ->  Essays finished
+          ->  Recommendations requested (4 weeks before deadline)
+          ->  Transcript requested
+          ->  Draft 1 started
+          ->  Requirements confirmed with the program
+```
+
+The table gives those milestones as prompted rows with suggested lead times pre-filled relative to the deadline they entered, each editable: milestone, date, what "done" means, who I need help from. Add-row for program-specific steps.
+
+**Onto their calendar** — every milestone with a date becomes a calendar item: one download covering the whole plan, plus a per-milestone one-click Google Calendar link, alongside the existing opportunity deadlines. Milestones default to a set time so they land as real appointments rather than vague all-day notes.
+
+**Debrief prompts, at the Part A rigor bar:**
+- Three things the requirements research told me I am not yet ready for, and what I am doing about each.
+- The first milestone due, its date, and what happens the day I miss it.
+- Who I am telling about this plan so someone else knows my dates.
+
 ## Technical notes
+
 
 - All wording lives in `src/lib/content/day1.ts` through `day4.ts`; no component logic changes beyond the new score computation.
 - Yes/No rows reuse the existing `agree` field kind with Yes/No labels, keyed `d2.pw.eval.*`.
@@ -78,4 +110,7 @@ A meeting table, one row per teacher, with add-row: teacher, subject, date and t
 - Reflection prompts that change from a single field to a table get new keys; old keys are left in place so nothing already saved is lost.
 - The teacher conversation lives in Day 2 pre-work under keys `d2.pw.teacherchat.*`; the question list is static prose plus a checklist so students can tick questions as they ask them.
 - Meeting rows with a confirmed date and time are picked up by the existing `.ics` export alongside opportunity deadlines.
+- Day 4 gallery walk and backward-calendar content lives under `d4.pw.gallery.*` and `d4.lab.backward.*`; milestone lead times are computed client-side from the entered deadline and remain editable.
+- `src/lib/ics.ts` is extended to emit milestone events as well as deadlines; Google Calendar template links are generated per row.
+
 
