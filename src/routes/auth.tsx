@@ -181,9 +181,30 @@ function AuthPage() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
-                minLength={6}
+                minLength={8}
+                aria-describedby="password-rules"
                 className="mt-1.5 bg-paper"
               />
+              {mode === "signup" ? (
+                <ul
+                  id="password-rules"
+                  className="mt-2 space-y-1 text-xs text-muted-foreground"
+                >
+                  {[
+                    { ok: password.length >= 8, label: "At least 8 characters" },
+                    { ok: /[A-Za-z]/.test(password), label: "At least one letter" },
+                    { ok: /[0-9]/.test(password), label: "At least one number" },
+                    {
+                      ok: password.length >= 12,
+                      label: "12+ characters recommended \u2014 common or breached passwords are rejected",
+                    },
+                  ].map((rule) => (
+                    <li key={rule.label} className={rule.ok ? "text-forest" : undefined}>
+                      <span aria-hidden="true">{rule.ok ? "\u2713" : "\u2022"}</span> {rule.label}
+                    </li>
+                  ))}
+                </ul>
+              ) : null}
             </div>
             {error ? <p className="text-sm text-destructive">{error}</p> : null}
             <Button type="submit" disabled={busy} className="w-full bg-forest text-forest-foreground hover:bg-forest/90">
