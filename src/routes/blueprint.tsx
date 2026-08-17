@@ -6,6 +6,7 @@ import { BookPage } from "@/components/workbook/BookPage";
 import { Button } from "@/components/ui/button";
 import { DAYS } from "@/lib/content/book";
 import { pageFields } from "@/lib/content/types";
+import { VAULT_HOME } from "@/lib/brand";
 import { downloadIcs, isValidDate, nextWeekday, type CalendarEvent } from "@/lib/ics";
 import { isAnswered, type ResponseMap } from "@/lib/responses";
 
@@ -274,7 +275,7 @@ function Blueprint({ responses }: { responses: ResponseMap }) {
           people who will check on your commitments all year.
         </p>
         <a
-          href="https://teensharp.org/the-vault"
+          href={VAULT_HOME}
           target="_blank"
           rel="noreferrer"
           className="mt-4 inline-flex rounded-md bg-vault px-5 py-2.5 text-sm font-semibold text-vault-foreground hover:opacity-90"

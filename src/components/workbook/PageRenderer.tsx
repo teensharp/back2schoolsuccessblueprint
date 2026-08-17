@@ -1,5 +1,6 @@
 import { ExternalLink, ListChecks, Quote } from "lucide-react";
 
+import { VAULT_HOME } from "@/lib/brand";
 import { BEHAVIOR_DEFINITIONS, type BehaviorName } from "@/lib/content/behaviors";
 import { findField } from "@/lib/content/book";
 import type { Block, Page, Part } from "@/lib/content/types";
@@ -9,7 +10,7 @@ import { OfferCard } from "./OfferCard";
 import { RecapBox } from "./RecapBox";
 import { WorkbookField } from "./WorkbookField";
 
-const VAULT_URL = "https://teensharp.org/the-vault";
+const VAULT_URL = VAULT_HOME;
 
 type Ctx = {
   responses: ResponseMap;
