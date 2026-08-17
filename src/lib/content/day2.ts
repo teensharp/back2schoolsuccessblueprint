@@ -458,11 +458,6 @@ export const day2: Day = {
           blocks: [{ kind: "recap", day: 2 }],
         },
         {
-          id: "recap",
-          title: "From the TeenSHARP team",
-          blocks: [{ kind: "recap", day: 2 }],
-        },
-        {
           id: "admissions",
           number: "2:00 PM",
           title: "What Academic Readiness Really Looks Like",
