@@ -166,11 +166,7 @@ function BlockView({ block, ctx }: { block: Block; ctx: Ctx }) {
                   <p className="text-sm font-semibold text-forest">Not answered yet</p>
                   <ul className="mt-1.5 list-disc space-y-1 pl-5 text-sm text-ink/85">
                     {missing.map((i) => (
-                      <li key={i.key}>
-                        <a href={i.href} className="underline underline-offset-2 hover:text-forest">
-                          {i.label}
-                        </a>
-                      </li>
+                      <li key={i.key}>{i.label}</li>
                     ))}
                   </ul>
                 </div>
@@ -178,13 +174,13 @@ function BlockView({ block, ctx }: { block: Block; ctx: Ctx }) {
               {thin.length > 0 ? (
                 <div className="mt-4 border-t border-forest/15 pt-3">
                   <p className="text-sm font-semibold text-forest">Needs more depth</p>
+                  <p className="mt-1 text-xs leading-relaxed text-ink/70">
+                    These answers are too short to show real thinking. Go back and add evidence,
+                    examples, and specifics.
+                  </p>
                   <ul className="mt-1.5 list-disc space-y-1 pl-5 text-sm text-ink/85">
                     {thin.map((i) => (
-                      <li key={i.key}>
-                        <a href={i.href} className="underline underline-offset-2 hover:text-forest">
-                          {i.label}
-                        </a>
-                      </li>
+                      <li key={i.key}>{i.label}</li>
                     ))}
                   </ul>
                 </div>
