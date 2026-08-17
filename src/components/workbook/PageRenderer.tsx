@@ -6,7 +6,6 @@ import { findField } from "@/lib/content/book";
 import type { Block, Page, Part } from "@/lib/content/types";
 import { isAnswered, type ResponseMap } from "@/lib/responses";
 
-import { OfferCard } from "./OfferCard";
 import { RecapBox } from "./RecapBox";
 import { WorkbookField } from "./WorkbookField";
 
