@@ -85,7 +85,7 @@ function DayRecap({
       <Input className="mt-1" value={heading} onChange={(e) => setHeading(e.target.value)} />
 
       <label className="mt-4 block text-xs font-semibold uppercase tracking-wide text-forest">
-        Raw session notes (for the AI draft only \u2014 students never see this)
+        Raw session notes (for the AI draft only &mdash; students never see this)
       </label>
       <Textarea
         className="mt-1"
