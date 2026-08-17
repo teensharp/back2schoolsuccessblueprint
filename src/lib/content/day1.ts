@@ -474,6 +474,11 @@ export const day1: Day = {
       subtitle: "Follow along with the live sessions. Capture what you hear and what it means for you.",
       parts: [
         {
+          id: "recap",
+          title: "From the TeenSHARP team",
+          blocks: [{ kind: "recap", day: 1 }],
+        },
+        {
           id: "keynote",
           number: "2:00 PM",
           title: "Kick Off Keynote \u2014 Dr. Dan Porterfield",
