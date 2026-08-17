@@ -200,3 +200,6 @@ Not ad banners. The workbook already knows the student's grade, what they strugg
 - New `session_summaries` table (day, title, body, published flag, published_at, author). Grants plus RLS: any authenticated student can read published rows; only staff/admin can insert, update, or unpublish. Students never write to it.
 - Staff drafting runs through a new server function on the Lovable AI gateway using `google/gemini-3.6-flash`, called only after a staff role check; the result is stored as an editable draft, never auto-published.
 - The recap box renders as a new block kind in `PageRenderer.tsx`, fed by a query on `session_summaries` for the current day; the admin editor lives as a tab on `/admin`.
+- Offers live in `src/lib/content/offers.ts` (id, name, price, audience grades, includes, excludes, CTA url, access note); placements reference an offer id, so nothing is duplicated per page.
+- A new `offer` block kind in `PageRenderer.tsx` renders them; grade routing is a pure function over the profile grade plus the student's own response data.
+- Click/impression tracking uses a small `offer_events` table (user_id, placement_id, offer_id, event, created_at) with insert-own RLS and staff read; the admin dashboard aggregates it.
