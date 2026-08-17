@@ -543,8 +543,13 @@ export const day2: Day = {
               title: "From your pre-work and session notes",
               from: [
                 "d2.pw.rigor",
+                "d2.pw.rigor.why",
                 "d2.pw.strategies.hardest",
+                "d2.pw.time",
+                "d2.pw.teachers.gap",
+                "d2.pw.conversations.pattern",
                 "d2.s.science.replace",
+                "d2.pw.eval.learned",
                 "d2.pw.eval.changes",
               ],
             },

@@ -374,7 +374,15 @@ export const day3: Day = {
             {
               kind: "carry",
               title: "From your pre-work and session notes",
-              from: ["d3.pw.community", "d3.s.workshop.evidence"],
+              from: [
+                "d3.pw.community",
+                "d3.pw.rootcause",
+                "d3.pw.deepen",
+                "d3.pw.stop",
+                "d3.pw.startnew",
+                "d3.pw.calendar.hard",
+                "d3.s.workshop.evidence",
+              ],
             },
           ],
         },
