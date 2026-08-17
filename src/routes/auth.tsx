@@ -41,6 +41,7 @@ function AuthPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
+  const [confirmationEmail, setConfirmationEmail] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
 
   useEffect(() => {
@@ -58,7 +59,7 @@ function AuthPage() {
             "Your password needs at least 8 characters, including one letter and one number.",
           );
         }
-        const { error: err } = await supabase.auth.signUp({
+        const { data, error: err } = await supabase.auth.signUp({
           email,
           password,
           options: {
@@ -67,6 +68,10 @@ function AuthPage() {
           },
         });
         if (err) throw err;
+        if (!data.session) {
+          setConfirmationEmail(email);
+          return;
+        }
       } else {
         const { error: err } = await supabase.auth.signInWithPassword({ email, password });
         if (err) throw err;
@@ -84,6 +89,9 @@ function AuthPage() {
         message = "That email already has an account. Switch to \u201CI already have an account\u201D to sign in.";
       } else if (/invalid login credentials/i.test(raw)) {
         message = "That email and password don\u2019t match. Check them and try again.";
+      } else if (/email not confirmed/i.test(raw)) {
+        message =
+          "Confirm your email before signing in. Open the message from TeenSHARP and click the confirmation link.";
       }
       setError(message);
     } finally {
@@ -129,6 +137,33 @@ function AuthPage() {
 
       <div className="flex items-center justify-center bg-background px-6 py-16">
         <div className="w-full max-w-sm">
+          {confirmationEmail ? (
+            <div role="status" className="border-l-4 border-vault bg-card p-5">
+              <h2 className="font-display text-3xl uppercase tracking-wide text-forest">
+                Check your email
+              </h2>
+              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                Your account was created. We sent a confirmation link to{" "}
+                <strong className="text-foreground">{confirmationEmail}</strong>. Open that message
+                and confirm your email before signing in.
+              </p>
+              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                Check spam or promotions if you do not see it. The message may take a few minutes.
+              </p>
+              <Button
+                type="button"
+                className="mt-5 w-full bg-forest text-forest-foreground hover:bg-forest/90"
+                onClick={() => {
+                  setConfirmationEmail(null);
+                  setMode("signin");
+                  setPassword("");
+                }}
+              >
+                I confirmed my email — sign in
+              </Button>
+            </div>
+          ) : (
+            <>
           <h2 className="font-display text-3xl uppercase tracking-wide text-forest">
             {mode === "signup" ? "Start your blueprint" : "Welcome back"}
           </h2>
@@ -194,16 +229,18 @@ function AuthPage() {
                     { ok: password.length >= 8, label: "At least 8 characters" },
                     { ok: /[A-Za-z]/.test(password), label: "At least one letter" },
                     { ok: /[0-9]/.test(password), label: "At least one number" },
-                    {
-                      ok: password.length >= 12,
-                      label: "12+ characters recommended \u2014 common or breached passwords are rejected",
-                    },
                   ].map((rule) => (
                     <li key={rule.label} className={rule.ok ? "text-forest" : undefined}>
                       <span aria-hidden="true">{rule.ok ? "\u2713" : "\u2022"}</span> {rule.label}
                     </li>
                   ))}
                 </ul>
+              ) : null}
+              {mode === "signup" ? (
+                <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
+                  Common or breached passwords are rejected even when they meet the rules above.
+                  Use a unique password; 12+ characters is recommended.
+                </p>
               ) : null}
             </div>
             {error ? <p className="text-sm text-destructive">{error}</p> : null}
@@ -241,6 +278,8 @@ function AuthPage() {
             </a>
             .
           </p>
+            </>
+          )}
         </div>
       </div>
     </div>
