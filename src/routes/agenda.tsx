@@ -1,5 +1,4 @@
 import { Link, createFileRoute } from "@tanstack/react-router";
-import { ExternalLink } from "lucide-react";
 
 import { BookPage } from "@/components/workbook/BookPage";
 import { AGENDA, AGENDA_NOTE } from "@/lib/content/agenda";
