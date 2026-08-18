@@ -147,7 +147,7 @@ export const day2: Day = {
                   choices: ["Yes", "No"],
                   score: true,
                   bands: [
-                    { min: 4, label: "In partnership", text: "You are already treating teachers as collaborators. Part 2 makes it deliberate." },
+                    { min: 3, label: "In partnership", text: "You are already treating teachers as collaborators. Part 2 makes it deliberate." },
                     { min: 2, label: "Occasional contact", text: "You reach out when something goes wrong. Move to a standing weekly rhythm." },
                     { min: 0, label: "Invisible", text: "Your teachers do not yet know what you are trying to do. Part 2 fixes this with actual meetings." },
                   ],
