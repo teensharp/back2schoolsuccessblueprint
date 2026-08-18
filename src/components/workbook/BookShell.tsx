@@ -54,7 +54,7 @@ function NavContent({
                   to="/day/$day/$section"
                   params={{ day: String(d.day), section: s }}
                   onClick={onNavigate}
-                  activeProps={{ className: "bg-forest text-forest-foreground" }}
+                  activeProps={{ className: "bg-forest !text-forest-foreground" }}
                   className="flex items-center justify-between gap-2 rounded-md px-3 py-1.5 text-ink hover:bg-forest/10"
                 >
                   <span>{SECTION_LABELS[s]}</span>
