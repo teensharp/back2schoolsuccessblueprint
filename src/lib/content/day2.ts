@@ -285,7 +285,7 @@ export const day2: Day = {
             },
             {
               kind: "note",
-              text: "If a teacher says there is no textbook and none to lend, ask for a recommended title, then bring that title to your TeenSHARP advisor and to The Vault community \u2014 someone may have a copy.",
+              text: "If a teacher says there is no textbook and none to lend, ask for a recommended title, then share that title in Slack, upper classmen \u2014 someone may have a copy.",
             },
             f({
               kind: "table",
