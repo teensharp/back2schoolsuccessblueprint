@@ -181,7 +181,7 @@ export const day2: Day = {
                   statements: [
                     "I have a tutor for every class where I do not currently have an A.",
                     "I have asked high-achieving students in my classes to study with me or explain material.",
-                    "I have asked a TeenSHARP student who is strong in my weak subjects for help.",
+                    "I have asked a student who is strong in my weak subjects for help.",
                   ],
                 }),
               ],
