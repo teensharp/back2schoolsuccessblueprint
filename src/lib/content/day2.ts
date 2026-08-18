@@ -95,7 +95,7 @@ export const day2: Day = {
                   choices: ["Yes", "No"],
                   score: true,
                   bands: [
-                    { min: 4, label: "In control", text: "Your week is planned and your work lands on time. Hold this standard through November." },
+                    { min: 3, label: "In control", text: "Your week is planned and your work lands on time. Hold this standard through November." },
                     { min: 2, label: "Uneven", text: "You plan sometimes. Sometimes is what produces the missing-assignment email in October." },
                     { min: 0, label: "Improvising", text: "You are running the year on memory and adrenaline. Wednesday's pre-work rebuilds your calendar from scratch." },
                   ],
