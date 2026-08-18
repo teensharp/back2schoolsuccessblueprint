@@ -155,7 +155,7 @@ export const day2: Day = {
                     "I use a planner or planning app every day.",
                     "I check with my teacher whenever I am unsure which assignments are due.",
                     "In my most challenging classes, I meet with the teacher weekly to review concepts and notes.",
-                    "I contact TeenSHARP academic coaches or staff within 48 hours of receiving a grade below 85%.",
+                    
                     "I stay after school to review any assignment on which I received below an A.",
                   ],
                 }),
