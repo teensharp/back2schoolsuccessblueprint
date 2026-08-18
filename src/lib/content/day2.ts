@@ -95,14 +95,14 @@ export const day2: Day = {
                   choices: ["Yes", "No"],
                   score: true,
                   bands: [
-                    { min: 4, label: "In control", text: "Your week is planned and your work lands on time. Hold this standard through November." },
+                    { min: 3, label: "In control", text: "Your week is planned and your work lands on time. Hold this standard through November." },
                     { min: 2, label: "Uneven", text: "You plan sometimes. Sometimes is what produces the missing-assignment email in October." },
                     { min: 0, label: "Improvising", text: "You are running the year on memory and adrenaline. Wednesday's pre-work rebuilds your calendar from scratch." },
                   ],
                   statements: [
                     "I create or update a study schedule every week.",
                     "My study schedule includes extracurricular activities and weekends.",
-                    "I attend TeenSHARP group advising and rapid advising sessions regularly.",
+                    
                     "Every assignment I have submitted was proofread and turned in on time.",
                   ],
                 }),
@@ -147,7 +147,7 @@ export const day2: Day = {
                   choices: ["Yes", "No"],
                   score: true,
                   bands: [
-                    { min: 4, label: "In partnership", text: "You are already treating teachers as collaborators. Part 2 makes it deliberate." },
+                    { min: 3, label: "In partnership", text: "You are already treating teachers as collaborators. Part 2 makes it deliberate." },
                     { min: 2, label: "Occasional contact", text: "You reach out when something goes wrong. Move to a standing weekly rhythm." },
                     { min: 0, label: "Invisible", text: "Your teachers do not yet know what you are trying to do. Part 2 fixes this with actual meetings." },
                   ],
@@ -155,7 +155,7 @@ export const day2: Day = {
                     "I use a planner or planning app every day.",
                     "I check with my teacher whenever I am unsure which assignments are due.",
                     "In my most challenging classes, I meet with the teacher weekly to review concepts and notes.",
-                    "I contact TeenSHARP academic coaches or staff within 48 hours of receiving a grade below 85%.",
+                    
                     "I stay after school to review any assignment on which I received below an A.",
                   ],
                 }),
@@ -181,7 +181,7 @@ export const day2: Day = {
                   statements: [
                     "I have a tutor for every class where I do not currently have an A.",
                     "I have asked high-achieving students in my classes to study with me or explain material.",
-                    "I have asked a TeenSHARP student who is strong in my weak subjects for help.",
+                    "I have asked a student who is strong in my weak subjects for help.",
                   ],
                 }),
               ],
@@ -285,7 +285,7 @@ export const day2: Day = {
             },
             {
               kind: "note",
-              text: "If a teacher says there is no textbook and none to lend, ask for a recommended title, then bring that title to your TeenSHARP advisor and to The Vault community \u2014 someone may have a copy.",
+              text: "If a teacher says there is no textbook and none to lend, ask for a recommended title, then share that title in Slack, upper classmen \u2014 someone may have a copy.",
             },
             f({
               kind: "table",
