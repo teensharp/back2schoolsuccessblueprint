@@ -32,7 +32,7 @@ function NavContent({
             to={l.to}
             onClick={onNavigate}
             activeOptions={{ exact: true }}
-            activeProps={{ className: "bg-forest text-forest-foreground" }}
+            activeProps={{ className: "bg-forest !text-forest-foreground" }}
             className="block rounded-md px-3 py-1.5 font-semibold text-ink hover:bg-forest/10"
           >
             {l.label}
