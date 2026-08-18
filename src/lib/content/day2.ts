@@ -102,7 +102,7 @@ export const day2: Day = {
                   statements: [
                     "I create or update a study schedule every week.",
                     "My study schedule includes extracurricular activities and weekends.",
-                    "I attend TeenSHARP group advising and rapid advising sessions regularly.",
+                    
                     "Every assignment I have submitted was proofread and turned in on time.",
                   ],
                 }),
