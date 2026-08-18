@@ -1,19 +1,31 @@
-# Back up this project to GitHub
+# Day 2 pre-work cleanup + selected-tab readability
 
-No code changes are needed. This is a one-time setup you do in the Lovable UI.
+## 1. Selected tab text color (left sidebar)
 
-## Steps
+In the sidebar/mobile nav, active links get a dark green background but the base ink text color competes with the active white text, so the selected item reads as dark-on-dark. Fix by removing the base text color from the active state path (apply the light text with priority on the active class) for both the top-level links and the day/section links.
 
-1. In the Lovable editor, open the **Plus (+)** menu in the chat input (bottom left) → **GitHub** → **Connect project**.
-2. Authorize the **Lovable GitHub App** when GitHub prompts you.
-3. Choose the GitHub account or organization that should own the repository.
-4. Back in Lovable, click **Create Repository**.
+## 2. Remove TeenSHARP-specific assessment statements (Day 2 Pre-Work, 4.0 Challenge)
 
-After that, every change made in Lovable pushes to the repo automatically, and pushes made on GitHub sync back into Lovable.
+Delete these two statements:
+- Time Management: "I attend TeenSHARP group advising and rapid advising sessions regularly."
+- Teacher Relations: "I contact TeenSHARP academic coaches or staff within 48 hours of receiving a grade below 85%."
 
-## Good to know
+Because each category is scored out of its number of statements, the top scoring band thresholds shift down by one so the top band stays reachable:
+- Time Management: top band now at 3 of 3 (was 4 of 4).
+- Teacher Relations: top band now at 3 of 4 (was 4 of 5).
 
-- Only one GitHub account can be linked to a Lovable account at a time.
-- Alternative one-off export: Code Editor → **Download codebase** (paid workspaces).
-- The repo backs up **code only**. The Cloud backend (database tables, auth users, stored responses) is not in Git. Export data separately via Cloud → Advanced settings → Export data.
-- Lovable cannot import an existing GitHub repo into a new project, so if you later want this app in another workspace, you would create a new project there and copy files in from the repo, then rebuild the backend.
+## 3. Rephrase peer-help statement
+
+"I have asked a TeenSHARP student who is strong in my weak subjects for help." becomes "I have asked a student who is strong in my weak subjects for help."
+
+## 4. The Eleven Questions — textbook note
+
+Replace the note that points to the TeenSHARP advisor and The Vault community with:
+
+"If a teacher says there is no textbook and none to lend, ask for a recommended title, then share that title in Slack, upper classmen — someone may have a copy."
+
+## Technical notes
+
+- Content edits: `src/lib/content/day2.ts` (statements, band `min` values, note text).
+- Nav styling: `src/components/workbook/BookShell.tsx` `NavContent`.
+- No database or backend changes; existing saved answers keep their keys, only the statement wording/count within two categories changes.
