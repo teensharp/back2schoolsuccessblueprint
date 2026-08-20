@@ -639,30 +639,6 @@ export const day4: Day = {
             },
           ],
         },
-        {
-          id: "essay",
-          title: "Essay Notes",
-          blocks: [
-            f({
-              kind: "long",
-              key: "d4.lab.essay.theme",
-              label: "The through-line of my story:",
-              prefillFrom: "d4.pw.story",
-              rows: 4,
-            }),
-            f({
-              kind: "table",
-              key: "d4.lab.essay.moments",
-              label: "Moments I can write about",
-              rows: 3,
-              addRows: true,
-              columns: [
-                { key: "moment", label: "Moment", type: "long" },
-                { key: "shows", label: "What it shows about me", type: "long" },
-              ],
-            }),
-          ],
-        },
       ],
     },
     reflect: {
