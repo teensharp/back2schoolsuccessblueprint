@@ -87,6 +87,8 @@ export type Block =
   | { kind: "offer"; id: string; placement: string }
   /** A reference image with a caption, e.g. the model Google Calendar. */
   | { kind: "image"; src: string; alt: string; caption?: string }
+  /** A downloadable or external resource, rendered as a branded link card. */
+  | { kind: "resource"; label: string; href: string; text?: string; cta?: string }
   /** Auto-built list of every statement the student answered "No" to. */
   | { kind: "fixlist"; title: string; from: string[]; intro?: string }
   /** Numbered principles with an explanation and a worked example. */
