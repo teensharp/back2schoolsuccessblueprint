@@ -46,7 +46,10 @@ function renderCarried(value: unknown): string {
 function BlockView({ block, ctx }: { block: Block; ctx: Ctx }) {
   switch (block.kind) {
     case "prose":
-      return <p className="text-[15px] leading-relaxed text-ink/85">{block.text}</p>;
+      return (
+        <p className="whitespace-pre-line text-[15px] leading-relaxed text-ink/85">{block.text}</p>
+      );
+
 
     case "subhead":
       return (
