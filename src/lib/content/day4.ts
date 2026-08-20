@@ -184,6 +184,63 @@ export const day4: Day = {
           title: "Workshop: The Making of an Applier",
           intro: "Led by Alina de Zoysa, TeenSHARP Pre-College Program Coordinator and Alumna '21.",
           blocks: [
+            {
+              kind: "resource",
+              label: "NSLI-Y Application Guided Worksheet",
+              text: "The worked example for this workshop. Download it, then follow along as we walk the NSLI-Y application from eligibility to submission.",
+              href: nsliyWorksheet.url,
+              cta: "Download the worksheet (PDF)",
+            },
+            {
+              kind: "subhead",
+              text: "Walking the NSLI-Y site",
+            },
+            {
+              kind: "prose",
+              text: "Every strong application starts with reading the program's own site before you write a word. Here is where the information you need actually lives on nsliforyouth.org.",
+            },
+            {
+              kind: "image",
+              src: nsliyHome.url,
+              alt: "NSLI-Y homepage with the Eligibility button highlighted",
+              caption:
+                "Start on \u201cWhat is NSLI-Y?\u201d and click Eligibility first \u2014 confirm you qualify before you invest hours in an application.",
+            },
+            {
+              kind: "image",
+              src: nsliyImpact.url,
+              alt: "NSLI-Y homepage with the Impact button highlighted",
+              caption:
+                "Impact tells you what alumni actually do with the scholarship. Use it to write specifically about why this program, not any program.",
+            },
+            {
+              kind: "image",
+              src: nsliyHelpful.url,
+              alt: "The Helpful Information grid on the NSLI-Y site",
+              caption:
+                "The Helpful Information grid is the map of the entire application. Every tile below is one of these six.",
+            },
+            {
+              kind: "image",
+              src: nsliyRequirements.url,
+              alt: "Participation Requirements tile highlighted",
+              caption:
+                "Participation Requirements \u2014 what you are committing to if you are selected. Read this before you apply, not after.",
+            },
+            {
+              kind: "image",
+              src: nsliyDates.url,
+              alt: "Dates and Deadlines tile highlighted",
+              caption:
+                "Dates & Deadlines \u2014 the anchor date for your backward calendar in the Lab.",
+            },
+            {
+              kind: "image",
+              src: nsliyComponents.url,
+              alt: "Application Components tile highlighted",
+              caption:
+                "Application Components \u2014 essays, recommendations, and transcripts. Copy each one into your requirements table.",
+            },
             f({
               kind: "long",
               key: "d4.s.workshop.process",
