@@ -204,6 +204,24 @@ function BlockView({ block, ctx }: { block: Block; ctx: Ctx }) {
         </figure>
       );
 
+    case "resource":
+      return (
+        <div className="rounded-lg border border-forest/25 bg-forest/5 p-4">
+          <p className="font-display text-lg uppercase tracking-wide text-forest">{block.label}</p>
+          {block.text ? (
+            <p className="mt-2 text-[15px] leading-relaxed text-ink/85">{block.text}</p>
+          ) : null}
+          <a
+            href={block.href}
+            target="_blank"
+            rel="noreferrer"
+            className="mt-3 inline-flex items-center rounded-md bg-forest px-4 py-2 text-sm font-semibold text-forest-foreground hover:opacity-90"
+          >
+            {block.cta ?? "Open resource"}
+          </a>
+        </div>
+      );
+
     case "principles":
       return (
         <div className="space-y-4">

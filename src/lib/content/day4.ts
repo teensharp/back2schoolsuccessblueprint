@@ -1,6 +1,13 @@
 import { VAULT_VIDEOS } from "@/lib/brand";
 import { PROGRAM_CATALOG } from "./programs";
 import { f, type Block, type Day } from "./types";
+import nsliyWorksheet from "@/assets/nsliy/TeenSHARP_NSLI-Y_Application_Guided_Worksheet.pdf.asset.json";
+import nsliyHome from "@/assets/nsliy/1-3.png.asset.json";
+import nsliyHelpful from "@/assets/nsliy/2.png.asset.json";
+import nsliyRequirements from "@/assets/nsliy/4.png.asset.json";
+import nsliyDates from "@/assets/nsliy/5.png.asset.json";
+import nsliyComponents from "@/assets/nsliy/6.png.asset.json";
+import nsliyImpact from "@/assets/nsliy/7.png.asset.json";
 
 /** The catalog, rendered as reference blocks inside the Day 4 lab. */
 const catalogBlocks: Block[] = PROGRAM_CATALOG.flatMap((group) => [
@@ -133,6 +140,24 @@ export const day4: Day = {
           blocks: [{ kind: "recap", day: 4 }],
         },
         {
+          id: "symposium",
+          number: "2:00 PM",
+          title: "Summer Learning Symposium",
+          blocks: [
+            f({
+              kind: "table",
+              key: "d4.s.symposium",
+              label: "What peers did this summer that I could do next",
+              rows: 4,
+              addRows: true,
+              columns: [
+                { key: "who", label: "Student", type: "text" },
+                { key: "what", label: "What they did", type: "long" },
+              ],
+            }),
+          ],
+        },
+        {
           id: "gallery",
           number: "Gallery Walk",
           title: "Opportunity Gallery Walk",
@@ -148,8 +173,6 @@ export const day4: Day = {
               columns: [
                 { key: "name", label: "Opportunity", type: "text" },
                 { key: "area", label: "Interest area", type: "text" },
-                { key: "grades", label: "Grades served", type: "text" },
-                { key: "deadline", label: "Deadline (approx.)", type: "text" },
                 { key: "fit", label: "Why it could fit me", type: "long" },
               ],
             }),
@@ -163,30 +186,68 @@ export const day4: Day = {
           ],
         },
         {
-          id: "symposium",
-          number: "2:00 PM",
-          title: "Summer Learning Symposium",
-          blocks: [
-            f({
-              kind: "table",
-              key: "d4.s.symposium",
-              label: "What peers did this summer that I could do next",
-              rows: 4,
-              addRows: true,
-              columns: [
-                { key: "who", label: "Student", type: "text" },
-                { key: "what", label: "What they did", type: "long" },
-                { key: "path", label: "How they got in", type: "long" },
-              ],
-            }),
-          ],
-        },
-        {
           id: "workshop",
           number: "3:05 PM",
           title: "Workshop: The Making of an Applier",
           intro: "Led by Alina de Zoysa, TeenSHARP Pre-College Program Coordinator and Alumna '21.",
           blocks: [
+            {
+              kind: "resource",
+              label: "NSLI-Y Application Guided Worksheet",
+              text: "The worked example for this workshop. Download it, then follow along as we walk the NSLI-Y application from eligibility to submission.",
+              href: nsliyWorksheet.url,
+              cta: "Download the worksheet (PDF)",
+            },
+            {
+              kind: "subhead",
+              text: "Walking the NSLI-Y site",
+            },
+            {
+              kind: "prose",
+              text: "Every strong application starts with reading the program's own site before you write a word. Here is where the information you need actually lives on nsliforyouth.org.",
+            },
+            {
+              kind: "image",
+              src: nsliyHome.url,
+              alt: "NSLI-Y homepage with the Eligibility button highlighted",
+              caption:
+                "Start on \u201cWhat is NSLI-Y?\u201d and click Eligibility first \u2014 confirm you qualify before you invest hours in an application.",
+            },
+            {
+              kind: "image",
+              src: nsliyImpact.url,
+              alt: "NSLI-Y homepage with the Impact button highlighted",
+              caption:
+                "Impact tells you what alumni actually do with the scholarship. Use it to write specifically about why this program, not any program.",
+            },
+            {
+              kind: "image",
+              src: nsliyHelpful.url,
+              alt: "The Helpful Information grid on the NSLI-Y site",
+              caption:
+                "The Helpful Information grid is the map of the entire application. Every tile below is one of these six.",
+            },
+            {
+              kind: "image",
+              src: nsliyRequirements.url,
+              alt: "Participation Requirements tile highlighted",
+              caption:
+                "Participation Requirements \u2014 what you are committing to if you are selected. Read this before you apply, not after.",
+            },
+            {
+              kind: "image",
+              src: nsliyDates.url,
+              alt: "Dates and Deadlines tile highlighted",
+              caption:
+                "Dates & Deadlines \u2014 the anchor date for your backward calendar in the Lab.",
+            },
+            {
+              kind: "image",
+              src: nsliyComponents.url,
+              alt: "Application Components tile highlighted",
+              caption:
+                "Application Components \u2014 essays, recommendations, and transcripts. Copy each one into your requirements table.",
+            },
             f({
               kind: "long",
               key: "d4.s.workshop.process",
