@@ -179,25 +179,6 @@ export const day4: Day = {
           ],
         },
         {
-          id: "symposium",
-          number: "2:00 PM",
-          title: "Summer Learning Symposium",
-          blocks: [
-            f({
-              kind: "table",
-              key: "d4.s.symposium",
-              label: "What peers did this summer that I could do next",
-              rows: 4,
-              addRows: true,
-              columns: [
-                { key: "who", label: "Student", type: "text" },
-                { key: "what", label: "What they did", type: "long" },
-                { key: "path", label: "How they got in", type: "long" },
-              ],
-            }),
-          ],
-        },
-        {
           id: "workshop",
           number: "3:05 PM",
           title: "Workshop: The Making of an Applier",
