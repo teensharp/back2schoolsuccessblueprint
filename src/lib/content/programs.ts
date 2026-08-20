@@ -37,13 +37,13 @@ export const PROGRAM_CATALOG: ProgramGroup[] = [
       { name: "Kenyon Review Young Writers", grades: "10\u201312", note: "Selective writing workshop. Deadline typically February." },
       { name: "Interlochen Arts Camp", grades: "9\u201312", note: "Music, theatre, visual arts; scholarships available. Rolling with priority deadlines." },
       { name: "Sewanee Young Writers' Conference", grades: "10\u201312", note: "Writing intensive with aid. Deadline typically March." },
+      { name: "Princeton Summer Journalism Program", grades: "11", note: "Free journalism program for low-income students. Deadline typically February." },
     ],
   },
   {
     area: "Business, Economics, and Entrepreneurship",
     programs: [
       { name: "LEDA Career Institute", grades: "11", note: "Free leadership and college prep for high-achieving students. Deadline typically January." },
-      { name: "Bank of America Student Leaders", grades: "11\u201312", note: "Paid nonprofit internship plus leadership summit. Deadline typically January." },
       { name: "Wharton Global Youth (Leadership in the Business World)", grades: "11", note: "Financial aid available. Deadline typically February." },
       { name: "Management and Technology Summer Institute (Penn)", grades: "10\u201312", note: "Business and engineering. Deadline typically February." },
     ],
@@ -53,7 +53,6 @@ export const PROGRAM_CATALOG: ProgramGroup[] = [
     programs: [
       { name: "U.S. Senate Page Program", grades: "11", note: "Paid semester program in Washington. Deadlines vary by senator." },
       { name: "Junior State of America Summer School", grades: "9\u201312", note: "Government and debate; aid available. Deadline typically spring." },
-      { name: "Princeton Summer Journalism Program", grades: "11", note: "Free journalism program for low-income students. Deadline typically February." },
       { name: "Anytown / NCCJ Leadership Institutes", grades: "9\u201312", note: "Regional social justice leadership programs. Deadlines vary by region." },
     ],
   },
@@ -71,7 +70,6 @@ export const PROGRAM_CATALOG: ProgramGroup[] = [
       { name: "QuestBridge College Prep Scholars", grades: "11", note: "Free; opens the door to the National College Match. Deadline typically late March." },
       { name: "Coca-Cola Scholars", grades: "12", note: "National scholarship. Deadline typically late September." },
       { name: "Jack Kent Cooke Young Scholars", grades: "8", note: "Know the timeline so younger siblings do not miss it." },
-      { name: "TeenSHARP College Prep Programs", grades: "9\u201312", note: "Ask your advisor which track fits your year." },
     ],
   },
 ];
