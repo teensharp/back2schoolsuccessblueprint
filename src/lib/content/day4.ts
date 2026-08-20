@@ -133,6 +133,24 @@ export const day4: Day = {
           blocks: [{ kind: "recap", day: 4 }],
         },
         {
+          id: "symposium",
+          number: "2:00 PM",
+          title: "Summer Learning Symposium",
+          blocks: [
+            f({
+              kind: "table",
+              key: "d4.s.symposium",
+              label: "What peers did this summer that I could do next",
+              rows: 4,
+              addRows: true,
+              columns: [
+                { key: "who", label: "Student", type: "text" },
+                { key: "what", label: "What they did", type: "long" },
+              ],
+            }),
+          ],
+        },
+        {
           id: "gallery",
           number: "Gallery Walk",
           title: "Opportunity Gallery Walk",
@@ -148,8 +166,6 @@ export const day4: Day = {
               columns: [
                 { key: "name", label: "Opportunity", type: "text" },
                 { key: "area", label: "Interest area", type: "text" },
-                { key: "grades", label: "Grades served", type: "text" },
-                { key: "deadline", label: "Deadline (approx.)", type: "text" },
                 { key: "fit", label: "Why it could fit me", type: "long" },
               ],
             }),
