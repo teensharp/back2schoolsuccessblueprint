@@ -146,7 +146,7 @@ export function BookShell({
       </header>
 
       <div className="mx-auto flex max-w-6xl gap-8 px-4 py-8">
-        <aside className="sticky top-24 hidden h-fit w-64 shrink-0 lg:block">
+        <aside className="sticky top-24 hidden max-h-[calc(100vh-8rem)] w-64 shrink-0 overflow-y-auto pr-2 lg:block">
           <NavContent responses={responses} />
         </aside>
         <main className="min-w-0 flex-1">

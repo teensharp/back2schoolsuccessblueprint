@@ -194,59 +194,285 @@ export const day4: Day = {
             {
               kind: "resource",
               label: "NSLI-Y Application Guided Worksheet",
-              text: "The worked example for this workshop. Download it, then follow along as we walk the NSLI-Y application from eligibility to submission.",
+              text: "The full worksheet is built into this page below \u2014 work it here and everything saves automatically. Use this download only if you want a paper copy.",
               href: nsliyWorksheet.url,
-              cta: "Download the worksheet (PDF)",
-            },
-            {
-              kind: "subhead",
-              text: "Walking the NSLI-Y site",
+              cta: "Download the PDF copy",
             },
             {
               kind: "prose",
-              text: "Every strong application starts with reading the program's own site before you write a word. Here is where the information you need actually lives on nsliforyouth.org.",
+              text: "Breakout-room goal: understand the opportunity, identify every requirement, and leave with a realistic application plan.",
+            },
+
+            {
+              kind: "subhead",
+              text: "Part 1: Research the Opportunity (10 minutes)",
+            },
+            {
+              kind: "note",
+              text: "Program snapshot: The National Security Language Initiative for Youth (NSLI-Y) is a merit-based scholarship program for U.S. high school students who want to study languages considered important to U.S. national security and economic competitiveness. Participants take part in immersive summer or academic-year programs abroad, where they study their target language, live with host families for all or part of the program, engage with local communities, and participate in cultural activities.",
+            },
+            {
+              kind: "prose",
+              text: "Step 1 (2 min): Start your research at the NSLI-Y home page \u2014 that is where you should start for every opportunity you apply to. Begin by making sure you are eligible. Even if you are not currently eligible, doing this activity builds your experience navigating the application process for a competitive summer program. First, click the \u201cEligibility\u201d tab.",
             },
             {
               kind: "image",
               src: nsliyHome.url,
               alt: "NSLI-Y homepage with the Eligibility button highlighted",
-              caption:
-                "Start on \u201cWhat is NSLI-Y?\u201d and click Eligibility first \u2014 confirm you qualify before you invest hours in an application.",
+              caption: "Click \u201cEligibility\u201d on the NSLI-Y home page.",
             },
             {
-              kind: "image",
-              src: nsliyImpact.url,
-              alt: "NSLI-Y homepage with the Impact button highlighted",
-              caption:
-                "Impact tells you what alumni actually do with the scholarship. Use it to write specifically about why this program, not any program.",
+              kind: "prose",
+              text: "On the eligibility page, pay specific attention to the \u201cSummer & Academic Year Abroad\u201d requirements, then answer the following questions.",
+            },
+            f({
+              kind: "long",
+              key: "d4.s.nsliy.q1",
+              label: "1. What are the main eligibility requirements for this program?",
+              rows: 4,
+            }),
+            f({
+              kind: "long",
+              key: "d4.s.nsliy.q2",
+              label:
+                "2. Are you eligible for the Summer 2027 cohort of NSLI-Y? Explain which requirements you meet and which you do not.",
+              rows: 3,
+            }),
+            {
+              kind: "prose",
+              text: "Return to the home page and answer the following question.",
+            },
+            f({
+              kind: "long",
+              key: "d4.s.nsliy.q3",
+              label: "3. In your own words, what are NSLI-Y's main goals?",
+              rows: 3,
+            }),
+            {
+              kind: "prose",
+              text: "Step 2 (1 min): Scroll down to the \u201cHelpful Information\u201d section of the home page.",
             },
             {
               kind: "image",
               src: nsliyHelpful.url,
               alt: "The Helpful Information grid on the NSLI-Y site",
               caption:
-                "The Helpful Information grid is the map of the entire application. Every tile below is one of these six.",
+                "The Helpful Information grid is the map of the entire application \u2014 every page you visit next is one of these tiles.",
+            },
+            {
+              kind: "prose",
+              text: "Step 3 (2 min): You have already explored the eligibility page. Now move on to the \u201cParticipation Requirements\u201d page.",
             },
             {
               kind: "image",
               src: nsliyRequirements.url,
               alt: "Participation Requirements tile highlighted",
-              caption:
-                "Participation Requirements \u2014 what you are committing to if you are selected. Read this before you apply, not after.",
+              caption: "Open \u201cParticipation Requirements.\u201d",
+            },
+            {
+              kind: "prose",
+              text: "Briefly read the \u201cParticipant Expectations\u201d section at the top of that page, then answer the following question.",
+            },
+            f({
+              kind: "long",
+              key: "d4.s.nsliy.q4",
+              label: "4. What type of skills is NSLI-Y looking for a participant to possess?",
+              rows: 3,
+            }),
+            {
+              kind: "prose",
+              text: "Step 4 (1 min): Go back to the home page, then click the \u201cDates & Deadlines\u201d page.",
             },
             {
               kind: "image",
               src: nsliyDates.url,
               alt: "Dates and Deadlines tile highlighted",
-              caption:
-                "Dates & Deadlines \u2014 the anchor date for your backward calendar in the Lab.",
+              caption: "Open \u201cDates & Deadlines.\u201d",
+            },
+            {
+              kind: "note",
+              text: "The dates still reflect the Summer 2026 and Academic Year 2026-27 timeline. NSLI-Y has not posted the Summer 2027 timeline yet, but the dates will be very similar. Use last year's dates as your guide, and answer the questions below based on the Summer 2026 timeline.",
+            },
+            f({
+              kind: "short",
+              key: "d4.s.nsliy.q5",
+              label: "5. When was the Summer 2026 application due?",
+            }),
+            f({
+              kind: "short",
+              key: "d4.s.nsliy.q6",
+              label: "6. When was the recommendation and legal guardian statement due?",
+            }),
+            f({
+              kind: "short",
+              key: "d4.s.nsliy.q7",
+              label: "7. When were semifinalists notified?",
+            }),
+            {
+              kind: "prose",
+              text: "Step 5 (2 min): Return to the home page and click the \u201cApplication Components\u201d page.",
             },
             {
               kind: "image",
               src: nsliyComponents.url,
               alt: "Application Components tile highlighted",
-              caption:
-                "Application Components \u2014 essays, recommendations, and transcripts. Copy each one into your requirements table.",
+              caption: "Open \u201cApplication Components.\u201d",
+            },
+            f({
+              kind: "long",
+              key: "d4.s.nsliy.q8",
+              label:
+                "8. What applicant information will NSLI-Y collect within the first part of the application?",
+              rows: 3,
+            }),
+            f({
+              kind: "long",
+              key: "d4.s.nsliy.q9",
+              label:
+                "9. What are the three written portions of the application that need to be completed?",
+              rows: 3,
+            }),
+            f({
+              kind: "long",
+              key: "d4.s.nsliy.q10",
+              label: "10. What documents will you need to upload to complete your application?",
+              rows: 3,
+            }),
+            f({
+              kind: "long",
+              key: "d4.s.nsliy.q11",
+              label:
+                "11. You will need two pieces of supplemental information: a recommendation and a legal guardian statement. What are the requirements for your recommender?",
+              rows: 3,
+            }),
+            {
+              kind: "prose",
+              text: "Step 6 (3 min): You now know whether you are eligible, what the participation requirements are, what the application components are, and when everything is due. Now learn about the program itself. Return to the home page and click the \u201cImpact\u201d tab. Your research on the program should show up directly in your essays \u2014 they must demonstrate that you are ready to fully participate in NSLI-Y.",
+            },
+            {
+              kind: "image",
+              src: nsliyImpact.url,
+              alt: "NSLI-Y homepage with the Impact button highlighted",
+              caption: "Open the \u201cImpact\u201d tab.",
+            },
+            f({
+              kind: "long",
+              key: "d4.s.nsliy.q12",
+              label:
+                "12. Name two things about NSLI-Y that would make this opportunity valuable or interesting to you.",
+              rows: 4,
+            }),
+            f({
+              kind: "long",
+              key: "d4.s.nsliy.q13",
+              label:
+                "13. What qualities do you think NSLI-Y is looking for in a strong applicant? What evidence makes you think that?",
+              rows: 4,
+            }),
+
+            {
+              kind: "subhead",
+              text: "Part 2: Plan Your Application Timeline (6 minutes)",
+            },
+            {
+              kind: "prose",
+              text: "How long does this application really take? Here is TeenSHARP's honest estimate for each step:",
+            },
+            {
+              kind: "prose",
+              text: "Read the NSLI-Y website and confirm you are eligible \u2014 20-30 min\nRead the full application from top to bottom \u2014 5-10 min\nGather your background, experience, and program/language preferences for the \u201capplicant information\u201d section \u2014 10 min\nIdentify and ask permission from one recommender (ask in person, then email follow-up) \u2014 10-15 min plus wait time\nComplete and send your Brag Sheet to your recommender \u2014 30-60 min\nBrainstorm the three written responses \u2014 15-20 min each\nWrite first drafts \u2014 30-40 min each; about 2.5-3 hrs total\nGet feedback, then revise and proofread \u2014 about 2 weeks\nComplete the final application, submit, and save the confirmation \u2014 30 min",
+            },
+            f({
+              kind: "short",
+              key: "d4.s.nsliy.underestimated",
+              label: "Which step did you underestimate most?",
+            }),
+            f({
+              kind: "table",
+              key: "d4.s.nsliy.recommenders",
+              label: "Identifying recommenders",
+              rows: 2,
+              addRows: true,
+              columns: [
+                { key: "contact", label: "Contact", type: "text" },
+                { key: "why", label: "Why this person is a strong contact", type: "long" },
+                { key: "ask", label: "When will you ask permission?", type: "date" },
+              ],
+            }),
+            {
+              kind: "prose",
+              text: "Work backwards to identify your next steps:",
+            },
+            f({
+              kind: "table",
+              key: "d4.s.nsliy.backward",
+              label: "My backward calendar for this application",
+              rows: 1,
+              columns: [
+                { key: "official", label: "Official deadline", type: "date" },
+                { key: "personal", label: "My personal deadline", type: "date" },
+                { key: "feedback", label: "Feedback complete by", type: "date" },
+                { key: "draft", label: "First draft complete by", type: "date" },
+                { key: "recommender", label: "Recommender asked by", type: "date" },
+                { key: "start", label: "I will start on", type: "date" },
+              ],
+            }),
+            {
+              kind: "note",
+              text: "Application Ninja takeaway: a strong application is not one big task. It is a sequence \u2014 preliminary research, then an application timeline plan, then gathering information, then drafting, then feedback, then submission.",
+            },
+
+            {
+              kind: "subhead",
+              text: "Part 3: Writing Strong Essays",
+            },
+            {
+              kind: "prose",
+              text: "Read the two essay examples below. Both answer the same prompt. After reading the prompt and both examples, respond to the questions. We will discuss your answers during the session.",
+            },
+            {
+              kind: "note",
+              text: "Essay prompt: You may be hosted by a family, and just as you are curious about your host family, school, and instructors, they will be curious about you. Here is a chance to tell them about yourself in a letter. Address the questions below in your letter to communicate who you are and your motivation for applying to the program.",
+            },
+            {
+              kind: "prose",
+              text: "Strong essay example:",
+            },
+            {
+              kind: "prose",
+              text: "Dear Host Family,\n\n\u60a8\u597d! or \uc548\ub155\ud558\uc2ed\ub2c8\uae4c! I am [Student Name], a 15-year-old from [City, State], and I can already picture myself at your dinner table, learning how to use chopsticks while eating cultural dishes and laughing with you.\n\nMy friends say I bring new ideas to every hangout and make sure no one feels left out. Last week, I invited my friends to a dumpling restaurant where everything is handmade. By the end of the night, we laughed, shared stories, and befriended the owner. That is me, turning simple moments into memories.\n\nI thrive when learning new things. While learning Spanish, I stumbled, mixing tenses and making classmates giggle, but I didn't quit. I practiced daily with language apps, rewatched my favorite shows in Spanish, and spoke with native speakers whenever I could. As I improved, I realized others might struggle too, so I started tutoring to help them through the early stages. Now I'm nearly fluent in Spanish and have even dabbled in Japanese. Each language shows how words bridge people and cultures.\n\nMy dream careers are in international relations and teaching. Living with you means having conversations where we share our perspectives and learn from one another's backgrounds. That kind of exchange strengthens global awareness and teaching skills.\n\nI sincerely appreciate your openness in welcoming me and sharing your culture. Your generosity allows me to grow, learn, and connect in ways I will carry forever. I am truly grateful for this opportunity.\n\nI cannot wait to meet you and create lifelong memories together.\n\n\uc548\ub155\ud788 \uacc4\uc138\uc694! or \u518d\u89c1!\nSincerely,\n[Student Name]",
+            },
+            f({
+              kind: "long",
+              key: "d4.s.nsliy.essay.strong",
+              label: "1. Why do you think this would be considered a strong essay example?",
+              rows: 4,
+            }),
+            {
+              kind: "prose",
+              text: "Work-in-progress example:",
+            },
+            {
+              kind: "prose",
+              text: "Hi, my name is [Student Name]. I am a 10th grader at [High School Name] in [City, State]. I think that the people close to me would say that I am a very calm person. I think that I stay to myself for the most part and don't get caught up in it too much. I am friendly and approachable. I don't try to mean mug people, I try to look approachable and not scary because that's just who I am. I also would think people would say I am smart because of how I apply myself in school, how I can answer questions correctly and ask for help and help others who don't understand. My relationship with my family is that we are all together but separate. We all understand each other and we love each other but the way we do things is different. In my family I have to be a student, a teacher, and an athlete. I am a student when I am doing my assignments and going to school learning from a teacher, I am a teacher and older brother to my younger sisters. I have to teach them different stuff when we study together when they don't understand... Everybody likes being around me and I have a certain maturity that allows people to trust me more than other people. To me what is important is making it to a good college and playing basketball at the highest level... I know what colleges I am thinking of going to but it might take me a little longer until I know what my 1A option will be.",
+            },
+            f({
+              kind: "long",
+              key: "d4.s.nsliy.essay.wip",
+              label:
+                "2. Why do you think this would be considered an essay that is still a work in progress?",
+              rows: 4,
+            }),
+            f({
+              kind: "long",
+              key: "d4.s.nsliy.essay.advice",
+              label: "3. What advice would you give this student to make this essay stronger?",
+              rows: 4,
+            }),
+
+            {
+              kind: "subhead",
+              text: "Closing reflection",
             },
             f({
               kind: "long",
@@ -261,6 +487,7 @@ export const day4: Day = {
               rows: 3,
             }),
           ],
+
         },
       ],
     },
