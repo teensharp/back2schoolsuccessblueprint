@@ -1,6 +1,13 @@
 import { VAULT_VIDEOS } from "@/lib/brand";
 import { PROGRAM_CATALOG } from "./programs";
 import { f, type Block, type Day } from "./types";
+import nsliyWorksheet from "@/assets/nsliy/TeenSHARP_NSLI-Y_Application_Guided_Worksheet.pdf.asset.json";
+import nsliyHome from "@/assets/nsliy/1-3.png.asset.json";
+import nsliyHelpful from "@/assets/nsliy/2.png.asset.json";
+import nsliyRequirements from "@/assets/nsliy/4.png.asset.json";
+import nsliyDates from "@/assets/nsliy/5.png.asset.json";
+import nsliyComponents from "@/assets/nsliy/6.png.asset.json";
+import nsliyImpact from "@/assets/nsliy/7.png.asset.json";
 
 /** The catalog, rendered as reference blocks inside the Day 4 lab. */
 const catalogBlocks: Block[] = PROGRAM_CATALOG.flatMap((group) => [
